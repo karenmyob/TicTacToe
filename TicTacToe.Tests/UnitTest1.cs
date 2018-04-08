@@ -3,11 +3,21 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace TicTacToe.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class BoardShould
     {
         [TestMethod]
-        public void TestMethod1()
+        public void AddPlayerMove()
         {
+            var board = new Board();
+            board.AddMove();
+        }
+    }
+
+    public class Board
+    {
+        public void AddMove()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
