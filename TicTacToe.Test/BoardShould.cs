@@ -22,5 +22,13 @@ namespace TicTacToe.Test
         public List<Move> Player1Moves { get; set; }
         public List<Move> Player2Moves { get; set; }
         public List<Move> AllMoves { get; set; }
+
+        public Board()
+        {
+            Player1Moves = new List<Move>();
+            Player2Moves = new List<Move>();
+            AllMoves = new List<Move>();
+            
+        }
     }
 }
