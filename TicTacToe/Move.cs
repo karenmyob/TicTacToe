@@ -9,5 +9,15 @@ namespace TicTacToe
             this.x = x;
             this.y = y;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj.GetType() == typeof(Move))
+            {
+                var move = (Move) obj;
+                return move.x == this.x && move.y == this.y;
+            }
+            return base.Equals(obj);
+        }
     }
 }
