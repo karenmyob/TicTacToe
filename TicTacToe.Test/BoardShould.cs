@@ -16,7 +16,7 @@ namespace TicTacToe.Test
         }
 
         [Fact]
-        public void AddFirstPlayerMove()
+        public void AddPlayerMoves()
         {
             var board = new Board();
             var move1 = new Move(1,2);
@@ -45,9 +45,9 @@ namespace TicTacToe.Test
             Player1Moves.Add(move);
         }
 
-        public void AddPlayer2Move(Move move3)
+        public void AddPlayer2Move(Move move)
         {
-            throw new System.NotImplementedException();
+            Player2Moves.Add(move);
         }
     }
 }
