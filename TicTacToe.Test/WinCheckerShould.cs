@@ -22,7 +22,7 @@ namespace TicTacToe.Test
             var winChecker = new WinChecker();
             var move1 = new Move(1,1);
             var move2 = new Move(2,2);
-            var move3 = new Move(2,2);
+            var move3 = new Move(3,3);
             var moves = new List<Move>{move1,move2,move3};
             bool result = winChecker.DidWin(moves);
             Assert.True(result);
@@ -73,12 +73,7 @@ namespace TicTacToe.Test
         
         private bool PlayerMadeAllRequiredWinningMoves<T>(IEnumerable<T> allPlayerMoves, IEnumerable<T> requiredWinningMoves)
         {
-            //Tuple<int, int> allMovesTuple = getTuple(allMoves);
-            //Tuple<int, int> winningMovesTuple = getTuple(winningMoves);
-            var leftoverMoves = requiredWinningMoves.Except(allPlayerMoves);
-            var anyLeftOverMoves = leftoverMoves.Any();
-            return !anyLeftOverMoves;
-            //return !winningMoves.Except(allMoves).Any();
+            return requiredWinningMoves.All(i=>allPlayerMoves.Contains(i));
         }
     }
 }
