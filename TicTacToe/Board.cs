@@ -1,26 +1,17 @@
-using System.Collections.Generic;
-
 namespace TicTacToe
 {
     public class Board
     {
-        public List<Move> xTokens { get; private set; }
-        public List<Move> oTokens { get; private set; }
+        public string[,] Moves { get; private set; }
 
         public Board()
         {
-            xTokens = new List<Move>();
-            oTokens = new List<Move>();   
+            Moves = new string[3,3];
         }
 
-        public void AddXToken(Move move)
+        public void AddMove(Move move, string token)
         {
-            xTokens.Add(move);
-        }
-
-        public void AddYToken(Move move)
-        {
-            oTokens.Add(move);
+            Moves[move.X, move.Y] = token;
         }
     }
 }

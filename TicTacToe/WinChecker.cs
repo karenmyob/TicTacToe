@@ -53,7 +53,7 @@ namespace TicTacToe
             var xValues = new List<int>();
             foreach (var move in moves)
             {
-                xValues.Add(move.x);
+                xValues.Add(move.X);
             }
 
             return xValues;
@@ -64,7 +64,7 @@ namespace TicTacToe
             var yValues = new List<int>();
             foreach (var move in moves)
             {
-                yValues.Add(move.y);
+                yValues.Add(move.Y);
             }
 
             return yValues;

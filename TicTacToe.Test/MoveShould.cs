@@ -7,11 +7,11 @@ namespace TicTacToe.Test
     public class MoveShould
     {
         [Fact]
-        public void HaveAnXandYValue()
+        public void HaveAnXAndYValue()
         {
             var move = new Move(1,2);
-            Assert.Equal(1,move.x);
-            Assert.Equal(2,move.y);
+            Assert.Equal(1,move.X);
+            Assert.Equal(2,move.Y);
         }
 
         [Fact]
@@ -30,7 +30,6 @@ namespace TicTacToe.Test
             var move2 = new Move(1,2);
             Assert.False(move.Equals(move2));
             Assert.NotEqual(move, move2);
-
         }
 
     }

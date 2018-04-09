@@ -6,26 +6,29 @@ namespace TicTacToe.Test
 {
     public class BoardShould
     {
+        private readonly Board _board;
+
+        public BoardShould()
+        {
+            _board =  new Board();
+        }
+        
         [Fact]
         public void HaveAnInitialBlankState()
         {
-            var board = new Board();
-            Assert.Equal(board.xTokens,new List<Move>());
-            Assert.Equal(board.oTokens, new List<Move>());
-            
+            Assert.Equal(_board.Moves, new string[3,3]);           
         }
 
         [Fact]
-        public void AddPlayerMoves()
-        {
-            var board = new Board();
+        public void AddPlayerMove()
+        {            
             var move1 = new Move(1,2);
-            var move2 = new Move(2,3);
-            var move3 = new Move(3,3);
-            board.AddXToken(move1);
-            board.AddXToken(move2);
-            board.AddYToken(move3);
-            Assert.Equal(new List<Move>{move1,move2},board.xTokens );
+            _board.AddMove(move1, "X");
+            
+            var expectedBoard = new string[3,3];
+            expectedBoard[move1.X, move1.Y] = "X";
+
+            Assert.Equal(expectedBoard, _board.Moves);
         }
     }
 }
