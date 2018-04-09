@@ -8,9 +8,14 @@ namespace TicTacToe
         private int NumberInARowToWin = 3;
         public bool DidWin(List<Move> moves)
         {
-            if (CheckDiagonal(moves))
+            if (CheckDiagonal(moves)||CheckHorizontal(moves))
                 return true;
             return false;
+        }
+
+        private bool CheckHorizontal(List<Move> moves)
+        {
+            throw new System.NotImplementedException();
         }
 
         private bool CheckDiagonal(List<Move> moves)
