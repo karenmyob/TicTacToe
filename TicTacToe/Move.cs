@@ -2,7 +2,7 @@ using System;
 
 namespace TicTacToe
 {
-    public class Move : IComparable<Move>
+    public class Move //: IComparable<Move>
     {
         public int x { get; private set; }
         public int y { get; private set; }
@@ -22,10 +22,10 @@ namespace TicTacToe
             return base.Equals(obj);
         }
                 
-        public int CompareTo(Move other)
+       /* public int CompareTo(Move other)
         {
             return x.CompareTo(other.x);
-        }
+        }*/
 
     }
 }
