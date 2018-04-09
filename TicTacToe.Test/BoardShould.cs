@@ -40,7 +40,7 @@ namespace TicTacToe.Test
 
         public void AddPlayer1Move(Move move)
         {
-            throw new System.NotImplementedException();
+            Player1Moves.Add(move);
         }
     }
 }
