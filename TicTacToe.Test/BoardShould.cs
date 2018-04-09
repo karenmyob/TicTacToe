@@ -11,7 +11,7 @@ namespace TicTacToe.Test
         {
             var board = new Board();
             Assert.Equal(board.xTokens,new List<Move>());
-            Assert.Equal(board.yTokens, new List<Move>());
+            Assert.Equal(board.oTokens, new List<Move>());
             
         }
 
@@ -22,9 +22,9 @@ namespace TicTacToe.Test
             var move1 = new Move(1,2);
             var move2 = new Move(2,3);
             var move3 = new Move(3,3);
-            board.AddPlayer1Move(move1);
-            board.AddPlayer1Move(move2);
-            board.AddPlayer2Move(move3);
+            board.AddXToken(move1);
+            board.AddXToken(move2);
+            board.AddYToken(move3);
             Assert.Equal(new List<Move>{move1,move2},board.xTokens );
         }
     }

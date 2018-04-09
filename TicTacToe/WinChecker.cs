@@ -8,6 +8,7 @@ namespace TicTacToe
     public class WinChecker
     {
         private int NumberInARowToWin = 3;
+        
         public bool DidWin(List<Move> moves)
         {
             if (CheckDiagonal(moves)||CheckStraight(moves))
