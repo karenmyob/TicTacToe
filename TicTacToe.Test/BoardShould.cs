@@ -21,8 +21,10 @@ namespace TicTacToe.Test
             var board = new Board();
             var move1 = new Move(1,2);
             var move2 = new Move(2,3);
+            var move3 = new Move(3,3);
             board.AddPlayer1Move(move1);
             board.AddPlayer1Move(move2);
+            board.AddPlayer2Move(move3);
             Assert.Equal(new List<Move>{move1,move2},board.Player1Moves );
         }
     }
@@ -41,6 +43,11 @@ namespace TicTacToe.Test
         public void AddPlayer1Move(Move move)
         {
             Player1Moves.Add(move);
+        }
+
+        public void AddPlayer2Move(Move move3)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
