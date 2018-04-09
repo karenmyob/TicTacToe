@@ -20,13 +20,13 @@ namespace TicTacToe.Test
         }
 
         [Fact]
-        public void AddPlayerMoves()
+        public void AddPlayerMove()
         {            
             var move1 = new Move(1,2);
             _board.AddMove(move1, "X");
             
             var expectedBoard = new string[3,3];
-            expectedBoard[move1.x, move1.y] = "X";
+            expectedBoard[move1.X, move1.Y] = "X";
 
             Assert.Equal(expectedBoard, _board.Moves);
         }

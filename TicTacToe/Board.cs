@@ -11,7 +11,7 @@ namespace TicTacToe
 
         public void AddMove(Move move, string token)
         {
-            Moves[move.x, move.y] = token;
+            Moves[move.X, move.Y] = token;
         }
     }
 }
