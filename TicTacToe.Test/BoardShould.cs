@@ -10,8 +10,8 @@ namespace TicTacToe.Test
         public void HaveAnInitialBlankState()
         {
             var board = new Board();
-            Assert.Equal(board.Player1Moves,new List<Move>());
-            Assert.Equal(board.Player2Moves, new List<Move>());
+            Assert.Equal(board.xTokens,new List<Move>());
+            Assert.Equal(board.yTokens, new List<Move>());
             
         }
 
@@ -25,7 +25,7 @@ namespace TicTacToe.Test
             board.AddPlayer1Move(move1);
             board.AddPlayer1Move(move2);
             board.AddPlayer2Move(move3);
-            Assert.Equal(new List<Move>{move1,move2},board.Player1Moves );
+            Assert.Equal(new List<Move>{move1,move2},board.xTokens );
         }
     }
 }

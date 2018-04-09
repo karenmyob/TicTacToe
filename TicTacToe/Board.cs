@@ -4,24 +4,23 @@ namespace TicTacToe
 {
     public class Board
     {
-        public List<Move> Player1Moves { get; set; }
-        //public IReadOnlyList<Move> Player1Moves => _player1Moves;
-        public List<Move> Player2Moves { get; set; }
+        public List<Move> xTokens { get; set; }
+        public List<Move> yTokens { get; set; }
 
         public Board()
         {
-            Player1Moves = new List<Move>();
-            Player2Moves = new List<Move>();   
+            xTokens = new List<Move>();
+            yTokens = new List<Move>();   
         }
 
         public void AddPlayer1Move(Move move)
         {
-            Player1Moves.Add(move);
+            xTokens.Add(move);
         }
 
         public void AddPlayer2Move(Move move)
         {
-            Player2Moves.Add(move);
+            yTokens.Add(move);
         }
     }
 }
