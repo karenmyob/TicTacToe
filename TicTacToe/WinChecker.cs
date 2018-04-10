@@ -8,17 +8,32 @@ namespace TicTacToe
     public class WinChecker
     {
         private int NumberInARowToWin = 3;
-        
-        public bool DidWin(Board moves)
+
+        public bool DidWin(Board board)
         {
-            if (CheckDiagonal(moves)||CheckStraight(moves))
-                return true;
-            return false;
+            var xMoves = GetMoves(board.Moves, "X");
+            var oMoves = GetMoves(board.Moves, "O");
+            return CheckDiagonal(xMoves) || CheckStraight(xMoves);
+        }
+
+        private List<Move> GetMoves(string[,] board, string symbol)
+        {
+            var moves = new List<Move>();
+            for (var i = 0; i < board.GetLength(0); i++)
+            {
+                for (var j = 0; j < board.GetLength(1); j++)
+                {
+                    if (board[i, j] == symbol)
+                        moves.Add(new Move(i, j));
+                }
+            }
+
+            return moves;
         }
 
         private bool CheckStraight(List<Move> moves)
         {
-            var yValues= FlattenToYValues(moves);
+            var yValues = FlattenToYValues(moves);
             var xValues = FlattenToXValues(moves);
             return CheckEnoughInARowToWin(yValues) || CheckEnoughInARowToWin(xValues);
         }
@@ -74,37 +89,38 @@ namespace TicTacToe
         {
             var diagonalMoveFromTopLeft = GenerateFirstDiagonal();
             var diagonalMoveFromTopRight = GenerateSecondDiagonal();
-            
-            if (PlayerMadeAllRequiredMoves(moves, diagonalMoveFromTopLeft) 
+
+            if (PlayerMadeAllRequiredMoves(moves, diagonalMoveFromTopLeft)
                 || PlayerMadeAllRequiredMoves(moves, diagonalMoveFromTopRight))
                 return true;
             return false;
-
         }
 
         private List<Move> GenerateSecondDiagonal()
         {
-            var movesToWin =  new List<Move>();
+            var movesToWin = new List<Move>();
             for (var i = 1; i <= NumberInARowToWin; i++)
             {
-                movesToWin.Add(new Move(i, i));
+                movesToWin.Add(new Move(i - 1, i - 1));
             }
+
             return movesToWin;
         }
 
         private List<Move> GenerateFirstDiagonal()
         {
-            var movesToWin =  new List<Move>();
+            var movesToWin = new List<Move>();
             for (var i = 1; i <= NumberInARowToWin; i++)
             {
-                movesToWin.Add(new Move(i, NumberInARowToWin+1-i));
+                movesToWin.Add(new Move(i -1 , NumberInARowToWin - i));
             }
+
             return movesToWin;
         }
-        
+
         private bool PlayerMadeAllRequiredMoves<T>(IEnumerable<T> allPlayerMoves, IEnumerable<T> requiredWinningMoves)
         {
-            return requiredWinningMoves.All(i=>allPlayerMoves.Contains(i));
+            return requiredWinningMoves.All(i => allPlayerMoves.Contains(i));
         }
     }
 }

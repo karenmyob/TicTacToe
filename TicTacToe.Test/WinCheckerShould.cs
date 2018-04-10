@@ -6,7 +6,7 @@ namespace TicTacToe.Test
     public class WinCheckerShould
     {
         private readonly WinChecker _winChecker;
-        private readonly Board _board;
+        private Board _board;
 
         public WinCheckerShould()
         {
@@ -27,9 +27,10 @@ namespace TicTacToe.Test
         [Fact]
         public void IndentifyANonWin2()
         {
+            _board=new Board();
             var move1 = new Move(1,1);
             var move2 = new Move(2,1);
-            var move3 = new Move(3,3);
+            var move3 = new Move(1,2);
             var move4 = new Move(2,3);
             _board.AddMove(move1,"X");
             _board.AddMove(move2,"X");
@@ -38,6 +39,7 @@ namespace TicTacToe.Test
             bool result = _winChecker.DidWin(_board);
             Assert.False(result);
         }
+        
         [Fact]
         public void IndentifyARightToLeftDiagonalWin()
         {
@@ -50,6 +52,7 @@ namespace TicTacToe.Test
             bool result = _winChecker.DidWin(_board);
             Assert.True(result);
         }
+        
         [Fact]
         public void IndentifyALeftToRightDiagonalWin()
         {
