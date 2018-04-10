@@ -9,7 +9,7 @@ namespace TicTacToe
     {
         private int NumberInARowToWin = 3;
         
-        public bool DidWin(List<Move> moves)
+        public bool DidWin(Board moves)
         {
             if (CheckDiagonal(moves)||CheckStraight(moves))
                 return true;
