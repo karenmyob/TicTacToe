@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -34,6 +35,14 @@ namespace TicTacToe.Test
         public void GetXMoves()
         {
             
+        }
+
+        [Fact]
+        public void Initialise()
+        {
+            _board.Initialise();
+            var expected = new string[,] {{".", ".", "."}, {".", ".", "."}, {".", ".", "."}};
+            Assert.Equal(expected, _board.Moves);
         }
     }
 }

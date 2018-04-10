@@ -32,5 +32,16 @@ namespace TicTacToe
 
             return moves;
         }
+
+        public void Initialise()
+        {
+            for (int i = 0; i < Moves.GetLength(0); i++)
+            {
+                for (int j = 0; j < Moves.GetLength(1); j++)
+                {
+                    Moves[i, j] = ".";
+                }
+            }
+        }
     }
 }
