@@ -10,104 +10,93 @@ namespace TicTacToe.Test
 
         public WinCheckerShould()
         {
-            _winChecker =  new WinChecker();
+            _winChecker = new WinChecker();
             _board = new Board();
         }
-        
+
         [Fact]
         public void IndentifyANonWin()
         {
-            var move1 = new Move(1,1);
-            var move2 = new Move(2,1);
-            _board.AddMove(move1,"X");
-            _board.AddMove(move2,"X");
-            bool result = _winChecker.DidWin(_board);
-            Assert.False(result);
+            _board
+                .AddMove(1, 1, "X")
+                .AddMove(2, 1, "X")
+                .AddMove(3, 3, "O");
+                                           
+            bool didWin = _winChecker.DidWin(_board);
+            Assert.False(didWin);
         }
+
         [Fact]
         public void IndentifyANonWin2()
         {
-            _board=new Board();
-            var move1 = new Move(1,1);
-            var move2 = new Move(2,1);
-            var move3 = new Move(1,2);
-            var move4 = new Move(2,3);
-            _board.AddMove(move1,"X");
-            _board.AddMove(move2,"X");
-            _board.AddMove(move3,"X");
-            _board.AddMove(move4,"X");
+            _board
+                .AddMove(1, 1, "X")
+                .AddMove(2, 1, "X")
+                .AddMove(1, 2, "X")
+                .AddMove(2, 3, "X");
+            
             bool result = _winChecker.DidWin(_board);
             Assert.False(result);
         }
-        
+
         [Fact]
         public void IndentifyARightToLeftDiagonalWin()
         {
-            var move1 = new Move(1,1);
-            var move2 = new Move(2,2);
-            var move3 = new Move(3,3);
-            _board.AddMove(move1,"X");
-            _board.AddMove(move2,"X");
-            _board.AddMove(move3,"X");
+            _board
+                .AddMove(3, 1, "X")
+                .AddMove(2, 2, "X")
+                .AddMove(1, 3, "X");
+
             bool result = _winChecker.DidWin(_board);
             Assert.True(result);
         }
-        
+
         [Fact]
         public void IndentifyALeftToRightDiagonalWin()
         {
-            var move1 = new Move(1,3);
-            var move2 = new Move(2,2);
-            var move3 = new Move(3,1);
-            var move4 = new Move(2,3);
-            _board.AddMove(move1,"X");
-            _board.AddMove(move2,"X");
-            _board.AddMove(move3,"X");
-            _board.AddMove(move4,"X");
+            _board
+                .AddMove(1, 1, "X")
+                .AddMove(2, 2, "X")
+                .AddMove(3, 3, "X");
+            
             bool result = _winChecker.DidWin(_board);
             Assert.True(result);
         }
+
         [Fact]
         public void IndentifyAHorizontalWin()
-        { 
-            var move1 = new Move(1,3);
-            var move2 = new Move(2,2);
-            var move3 = new Move(3,3);
-            var move4 = new Move(2,3);
-            _board.AddMove(move1,"X");
-            _board.AddMove(move2,"X");
-            _board.AddMove(move3,"X");
-            _board.AddMove(move4,"X");
+        {
+            _board
+                .AddMove(1, 3, "X")
+                .AddMove(2, 2, "X")
+                .AddMove(3, 3, "X")
+                .AddMove(2, 3, "X");
+
             bool result = _winChecker.DidWin(_board);
             Assert.True(result);
         }
-        
+
         [Fact]
         public void IndentifyAHorizontalWinForO()
-        { 
-            var move1 = new Move(1,3);
-            var move2 = new Move(2,2);
-            var move3 = new Move(3,3);
-            var move4 = new Move(2,3);
-            _board.AddMove(move1,"O");
-            _board.AddMove(move2,"O");
-            _board.AddMove(move3,"O");
-            _board.AddMove(move4,"O");
+        {
+            _board
+                .AddMove(1, 3, "O")
+                .AddMove(2, 2, "O")
+                .AddMove(3, 3, "O")
+                .AddMove(2, 3, "O");
+
             bool result = _winChecker.DidWin(_board);
             Assert.True(result);
         }
-        
+
         [Fact]
         public void IndentifyAVerticalWin()
         {
-            var move1 = new Move(1,3);
-            var move2 = new Move(2,2);
-            var move3 = new Move(2,1);
-            var move4 = new Move(2,3);
-            _board.AddMove(move1,"X");
-            _board.AddMove(move2,"X");
-            _board.AddMove(move3,"X");
-            _board.AddMove(move4,"X");
+            _board
+                .AddMove(1, 3, "X")
+                .AddMove(2, 2, "X")
+                .AddMove(2, 1, "X")
+                .AddMove(2, 3, "X");
             bool result = _winChecker.DidWin(_board);
             Assert.True(result);
         }

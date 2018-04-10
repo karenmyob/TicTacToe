@@ -22,13 +22,18 @@ namespace TicTacToe.Test
         [Fact]
         public void AddPlayerMove()
         {            
-            var move1 = new Move(1,2);
-            _board.AddMove(move1, "X");
+            _board.AddMove(1, 2, "X");
             
             var expectedBoard = new string[3,3];
             expectedBoard[0, 1] = "X";
 
             Assert.Equal(expectedBoard, _board.Moves);
+        }
+
+        [Fact]
+        public void GetXMoves()
+        {
+            
         }
     }
 }

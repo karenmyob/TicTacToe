@@ -11,29 +11,14 @@ namespace TicTacToe
 
         public bool DidWin(Board board)
         {
-            var xMoves = GetMoves(board.Moves, "X");
-            var oMoves = GetMoves(board.Moves, "O");
+            var xMoves = board.GetMoves("X");
+            var oMoves = board.GetMoves("O");
             return (CheckWin(xMoves) || CheckWin(oMoves));
         }
 
         private bool CheckWin(List<Move> xMoves)
         {
             return CheckDiagonal(xMoves) || CheckStraight(xMoves);
-        }
-
-        private List<Move> GetMoves(string[,] board, string symbol)
-        {
-            var moves = new List<Move>();
-            for (var i = 0; i < board.GetLength(0); i++)
-            {
-                for (var j = 0; j < board.GetLength(1); j++)
-                {
-                    if (board[i, j] == symbol)
-                        moves.Add(new Move(i, j));
-                }
-            }
-
-            return moves;
         }
 
         private bool CheckStraight(List<Move> moves)
