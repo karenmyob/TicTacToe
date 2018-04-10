@@ -81,6 +81,22 @@ namespace TicTacToe.Test
             bool result = _winChecker.DidWin(_board);
             Assert.True(result);
         }
+        
+        [Fact]
+        public void IndentifyAHorizontalWinForO()
+        { 
+            var move1 = new Move(1,3);
+            var move2 = new Move(2,2);
+            var move3 = new Move(3,3);
+            var move4 = new Move(2,3);
+            _board.AddMove(move1,"O");
+            _board.AddMove(move2,"O");
+            _board.AddMove(move3,"O");
+            _board.AddMove(move4,"O");
+            bool result = _winChecker.DidWin(_board);
+            Assert.True(result);
+        }
+        
         [Fact]
         public void IndentifyAVerticalWin()
         {

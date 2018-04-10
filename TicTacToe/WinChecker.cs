@@ -13,7 +13,7 @@ namespace TicTacToe
         {
             var xMoves = GetMoves(board.Moves, "X");
             var oMoves = GetMoves(board.Moves, "O");
-            return CheckDiagonal(xMoves) || CheckStraight(xMoves);
+            return (CheckDiagonal(xMoves) || CheckStraight(xMoves) || CheckDiagonal(oMoves) || CheckStraight(oMoves));
         }
 
         private List<Move> GetMoves(string[,] board, string symbol)
