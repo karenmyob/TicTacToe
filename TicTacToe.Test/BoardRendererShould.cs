@@ -10,8 +10,8 @@ namespace TicTacToe.Test
         {
             var board = new Board();
             board.Initialise();
-            var renderer = new BoardRenderer();
-            var stringBoard = renderer.ConvertToPrintableString(board);
+            var renderer = new BoardRenderer(board);
+            var stringBoard = renderer.ToText();
             var expectedString = "...\n...\n...\n";
             Assert.Equal(expectedString, stringBoard);
         }
@@ -27,30 +27,11 @@ namespace TicTacToe.Test
                 .AddMove(2, 2, "X")
                 .AddMove(3, 3, "O");
 
-            var renderer = new BoardRenderer();
-            var stringBoard = renderer.ConvertToPrintableString(board);
+            var renderer = new BoardRenderer(board);
+            var stringBoard = renderer.ToText();
             var expectedString = "X..\n.X.\nO.O\n";
             Assert.Equal(expectedString, stringBoard);
         }
-    }
-
-    public class BoardRenderer
-    {
-        public string ConvertToPrintableString(Board board)
-        {
-            var boardString = "";
-            var boardArray = board.Moves;
-            for (int i = 0; i < boardArray.GetLength(0); i++)
-            {
-                for (int j = 0; j < boardArray.GetLength(1); j++)
-                {
-                    boardString += boardArray[j, i];
-                }
-
-                boardString += "\n";
-            }
-
-            return boardString;
-        }
+        
     }
 }
