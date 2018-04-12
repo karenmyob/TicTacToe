@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace TicTacToe.Test
@@ -30,5 +31,6 @@ namespace TicTacToe.Test
             Assert.False(move.Equals(move2));
             Assert.NotEqual(move, move2);
         }
+
     }
 }

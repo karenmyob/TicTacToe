@@ -1,6 +1,8 @@
+using System;
+
 namespace TicTacToe
 {
-    public class Move
+    public class Move 
     {
         public int X { get; private set; }
         public int Y { get; private set; }
@@ -19,6 +21,6 @@ namespace TicTacToe
                 return move.X == this.X && move.Y == this.Y;
             }
             return base.Equals(obj);
-        }
+        }              
     }
 }
