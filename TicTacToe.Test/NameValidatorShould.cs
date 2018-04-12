@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using Xunit;
 
 namespace TicTacToe.Test
@@ -19,6 +20,8 @@ namespace TicTacToe.Test
         [Theory]
         [InlineData("31,1")]
         [InlineData("oo.rp")]
+        [InlineData("")]
+        [InlineData("ssjdhsnfkieksl")]
         public void DeclineInvalidNames(string input)
         {
             var positionValidator = new NameValidator();
@@ -31,7 +34,8 @@ namespace TicTacToe.Test
     {
         public bool IsValid(string input)
         {
-            throw new System.NotImplementedException(); // create numbers and letters only reader
+            var regex = new Regex("^[A-Za-z0-9 ]*$");
+            return regex.IsMatch(input)&& input.Length>0 && input.Length<14;
         }
     }
 }
