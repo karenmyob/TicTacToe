@@ -1,32 +1,49 @@
-﻿using Xunit;
+﻿using System.Collections.Generic;
+using Xunit;
 
 namespace TicTacToe.Test
 {
     public class MessageHandlerShould
-    {    
+    {   
+        
+        private readonly Board _board;
+        private readonly MessageHandler _messageHandler;
+
+        public MessageHandlerShould()
+        {
+            _board =  new Board();
+            _messageHandler = new MessageHandler();
+        }
         [Fact]
         public void ReturnWelcomeMessage()
         {
-            var messageHandler = new MessageHandler();
-            var board = new Board();
-            
-            string result = messageHandler.GetWelcomeMessage(board);           
-            var boardRenderer = new BoardRenderer(board);
+            var result = _messageHandler.GetWelcomeMessage(_board);           
+            var boardRenderer = new BoardRenderer(_board);
             
             Assert.Equal("Welcome to Tic Tac Toe!\n\nHere's the current board:\n\n"+boardRenderer.ToText(),result);
         }
         
         [Fact]
-        public void ReturnInstructionWithPlayerName()
+        public void ReturnInstructionWithPlayerNameX()
         {
-            var messageHandler = new MessageHandler();
-            string result = messageHandler.GetInstruction("X");
+            var result = _messageHandler.GetInstruction("X");
             Assert.Equal("Player 1 enter a coord x,y to place your X or enter 'q' to give up: ",result);
+        }
+        
+        [Fact]
+        public void ReturnInstructionWithPlayerNameO()
+        {
+            var result = _messageHandler.GetInstruction("O");
+            Assert.Equal("Player 2 enter a coord x,y to place your O or enter 'q' to give up: ",result);
         }
 
         [Fact]
         public void ReturnAcceptedMoveMessage()
         {
+            _board.AddMove(1, 1, "X");
+            var boardRenderer = new BoardRenderer(_board);
+            var result = _messageHandler.GetAcceptedMoveMessageAndBoard(_board);
+            Assert.Equal("Move Accepted, here's the current board:\n"+boardRenderer.ToText(),result);
             
         }
     }
@@ -48,7 +65,13 @@ namespace TicTacToe.Test
             if(symbol == "O")
                 player += "2";
 
-            return player + " enter a coord x,y to place your X or enter 'q' to give up: ";
+            return player + " enter a coord x,y to place your "+symbol+" or enter 'q' to give up: ";
+        }
+
+        public string GetAcceptedMoveMessageAndBoard(Board board)
+        {
+            var boardRenderer = new BoardRenderer(board);
+            return "Move Accepted, here's the current board:\n"+boardRenderer.ToText();
         }
     }
 }
