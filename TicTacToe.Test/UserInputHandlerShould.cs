@@ -5,6 +5,7 @@ namespace TicTacToe.Test
 {
     public class UserInputHandlerShould
     {
+        [Fact]
         public void GetMoveFromUser()
         {
             InputReader inputReader = new TestUserInputReader("1,1");
@@ -12,15 +13,20 @@ namespace TicTacToe.Test
             
             var inputHandler = new UserInputHandler();
             var result = inputHandler.GetInput(inputReader, inputValidator);
-            Assert.True(result);
+            
         }
     }
 
     public class UserInputHandler
     {
-        public bool GetInput(InputReader inputReader, InputValidator inputValidator)
+        public string GetInput(InputReader inputReader, InputValidator inputValidator)
         {
-            throw new System.NotImplementedException();
+            var input = inputReader.ReadInput();
+            if (inputValidator.IsValid(input))
+                return input;
+            
+            return GetInput(inputReader, inputValidator); //ask dan how to test recursion
+            //maybe further composition and take from a library of inputs
         }
     }
 }
