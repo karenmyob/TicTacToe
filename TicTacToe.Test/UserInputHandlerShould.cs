@@ -7,11 +7,11 @@ namespace TicTacToe.Test
     {
         public void GetMoveFromUser()
         {
-            InputReader inputReader;
-            InputValidator inputValidator;
+            InputReader inputReader = new TestUserInputReader("1,1");
+            InputValidator inputValidator = new PositionValidator();
             
             var inputHandler = new UserInputHandler();
-            var result = inputHandler.GetInput(inputReader,inputValidator)
+            var result = inputHandler.GetInput(inputReader, inputValidator);
             Assert.True(result);
         }
     }
