@@ -46,6 +46,13 @@ namespace TicTacToe.Test
             Assert.Equal("Move Accepted, here's the current board:\n"+boardRenderer.ToText(),result);
             
         }
+
+        [Fact]
+        public void ReturnMessageForTakenSpace()
+        {
+            var result = _messageHandler.GetMoveTakenMessage();
+            Assert.Equal("Oh no, a piece is already at this place! Try again...\n",result);
+        }
     }
 
     public class MessageHandler
@@ -72,6 +79,11 @@ namespace TicTacToe.Test
         {
             var boardRenderer = new BoardRenderer(board);
             return "Move Accepted, here's the current board:\n"+boardRenderer.ToText();
+        }
+
+        public string GetMoveTakenMessage()
+        {
+            return "Oh no, a piece is already at this place! Try again...\n";
         }
     }
 }
