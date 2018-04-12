@@ -53,6 +53,15 @@ namespace TicTacToe.Test
             var result = _messageHandler.GetMoveTakenMessage();
             Assert.Equal("Oh no, a piece is already at this place! Try again...\n",result);
         }
+
+        [Fact]
+        public void ReturnWinMessage()
+        {
+            var result = _messageHandler.GetWinMessageAndBoard(_board);
+            var renderer = new BoardRenderer(_board);
+            Assert.Equal("Move accepted, well done you've won the game!\n\n"+renderer.ToText(),result);
+
+        }
     }
 
     public class MessageHandler
@@ -84,6 +93,12 @@ namespace TicTacToe.Test
         public string GetMoveTakenMessage()
         {
             return "Oh no, a piece is already at this place! Try again...\n";
+        }
+
+        public string GetWinMessageAndBoard(Board board)
+        {
+            var renderer = new BoardRenderer(new Board());
+            return "Move accepted, well done you've won the game!\n\n" + renderer.ToText();
         }
     }
 }
