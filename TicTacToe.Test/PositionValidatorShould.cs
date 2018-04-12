@@ -27,5 +27,6 @@ namespace TicTacToe.Test
             var result = positionValidator.IsValid(input);
             Assert.False(result);
         }
+        
     }
 }
