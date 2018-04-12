@@ -62,6 +62,12 @@ namespace TicTacToe.Test
             Assert.Equal("Move accepted, well done you've won the game!\n\n"+renderer.ToText(),result);
 
         }
+        [Fact]
+        public void ReturnMessageForInvalidInput()
+        {
+            var result = _messageHandler.GetInvalidMessage();
+            Assert.Equal("Invalid...\n",result);
+        }
     }
 
     public class MessageHandler
@@ -76,10 +82,15 @@ namespace TicTacToe.Test
         {
             var player = "Player ";
             
-            if (symbol == "X")
-                player += "1";
-            if(symbol == "O")
-                player += "2";
+            switch (symbol)
+            {
+                case "X":
+                    player += "1";
+                    break;
+                case "O":
+                    player += "2";
+                    break;
+            }
 
             return player + " enter a coord x,y to place your "+symbol+" or enter 'q' to give up: ";
         }
@@ -99,6 +110,11 @@ namespace TicTacToe.Test
         {
             var renderer = new BoardRenderer(new Board());
             return "Move accepted, well done you've won the game!\n\n" + renderer.ToText();
+        }
+
+        public string GetInvalidMessage()
+        {
+            return "Invalid...\n";
         }
     }
 }
