@@ -1,4 +1,3 @@
-using System.Text.RegularExpressions;
 using Xunit;
 
 namespace TicTacToe.Test
@@ -27,15 +26,6 @@ namespace TicTacToe.Test
             var positionValidator = new NameValidator();
             var result = positionValidator.IsValid(input);
             Assert.False(result);
-        }
-    }
-
-    public class NameValidator : InputValidator
-    {
-        public bool IsValid(string input)
-        {
-            var regex = new Regex("^[A-Za-z0-9 ]*$");
-            return regex.IsMatch(input)&& input.Length>0 && input.Length<14;
         }
     }
 }
