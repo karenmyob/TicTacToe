@@ -17,7 +17,7 @@ namespace TicTacToe.Test
         [Fact]
         public void HaveAnInitialBlankState()
         {
-            Assert.Equal(_board.Moves, new string[3,3]);           
+            Assert.Equal(_board.Moves, new string[,]{{".", ".", "."}, {".", ".", "."}, {".", ".", "."}});           
         }
 
         [Fact]
@@ -25,7 +25,7 @@ namespace TicTacToe.Test
         {            
             _board.AddMove(1, 2, "X");
             
-            var expectedBoard = new string[3,3];
+            var expectedBoard = new string[,]{{".", ".", "."}, {".", ".", "."}, {".", ".", "."}};
             expectedBoard[0, 1] = "X";
 
             Assert.Equal(expectedBoard, _board.Moves);

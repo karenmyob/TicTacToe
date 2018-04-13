@@ -9,6 +9,7 @@ namespace TicTacToe
         public Board()
         {
             Moves = new string[3,3];
+            Initialise();
         }
 
         public Board AddMove(int x,int y, string token)

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Runtime.InteropServices.ComTypes;
 using Xunit;
 
@@ -6,27 +7,27 @@ namespace TicTacToe.Test
     public class UserInputHandlerShould
     {
         [Fact]
-        public void GetMoveFromUser()
+        public void GetValidMoveFromUser()
         {
             InputReader inputReader = new TestUserInputReader("1,1");
             InputValidator inputValidator = new PositionValidator();
             
             var inputHandler = new UserInputHandler();
             var result = inputHandler.GetInput(inputReader, inputValidator);
+            Assert.Equal("1,1",result);
             
         }
-    }
-
-    public class UserInputHandler
-    {
-        public string GetInput(InputReader inputReader, InputValidator inputValidator)
+        [Fact]
+        public void GetInvalidMoveFromUser()
         {
-            var input = inputReader.ReadInput();
-            if (inputValidator.IsValid(input))
-                return input;
+            var orderedInputList = new List<string> {"j", ",2,2", "2,2", "1,1"};
+            InputReader inputReader = new TestUserInputReader(orderedInputList);
+            InputValidator inputValidator = new PositionValidator();
             
-            return GetInput(inputReader, inputValidator); //ask dan how to test recursion
-            //maybe further composition and take from a library of inputs
+            var inputHandler = new UserInputHandler();
+            var result = inputHandler.GetInput(inputReader, inputValidator);
+            Assert.Equal("2,2",result);
+            
         }
     }
 }
