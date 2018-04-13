@@ -6,7 +6,7 @@ namespace TicTacToe
     {
         public bool IsValid(string input)
         {
-            Regex format = new Regex("^q$|^[1-3],[1-3]$");
+            Regex format = new Regex("^[1-3],[1-3]$");
             return format.IsMatch(input);
         }
     }
