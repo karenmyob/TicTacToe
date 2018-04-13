@@ -8,8 +8,8 @@ namespace TicTacToe.Test
         [InlineData("q")]
         public void AcceptValidPostions(string input)
         {
-            var moveValidator = new MoveValidator();
-            var result = moveValidator.IsValid(input);
+            var commmandValidator = new CommandValidator();
+            var result = commmandValidator.IsValid(input);
             Assert.True(result);
         }
         
@@ -20,17 +20,9 @@ namespace TicTacToe.Test
         [InlineData("4,1")]
         public void DeclineInvalidPostions(string input)
         {
-            var moveValidator = new MoveValidator();
-            var result = moveValidator.IsValid(input);
+            var commandValidator = new CommandValidator();
+            var result = commandValidator.IsValid(input);
             Assert.False(result);
-        }
-    }
-
-    public class MoveValidator : InputValidator
-    {
-        public bool IsValid(string input)
-        {
-            return input == "q";
         }
     }
 }
