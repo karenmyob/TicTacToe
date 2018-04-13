@@ -2,6 +2,6 @@
 {
     public interface InputHandler
     {
-        void Execute(string input);
+        void Execute(string input, Board board);
     }
 }

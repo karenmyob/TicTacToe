@@ -13,13 +13,14 @@ namespace TicTacToe.Test
         [Fact]
         public void GetValidMoveFromUser()
         {
+            var board = new Board();
             TestUserInputReader inputReader = new TestUserInputReader("1,1");
             InputValidator inputValidator = new PositionValidator();
             
             var inputHandler = new UserInputHandler();
             var fakeInputHandler = new FakeInputHandler(this);
             TriggerWasCalled = false;
-            inputHandler.GetInput(inputReader, inputValidator, fakeInputHandler);
+            inputHandler.GetInput(inputReader, inputValidator, fakeInputHandler, board);
             
             Assert.Equal(0, inputReader.ReadIndex());
             Assert.True(TriggerWasCalled);
@@ -35,7 +36,7 @@ namespace TicTacToe.Test
             var fakeInputHandler = new FakeInputHandler(this);
             TriggerWasCalled = false;
 
-            inputHandler.GetInput(inputReader, inputValidator, fakeInputHandler);
+            inputHandler.GetInput(inputReader, inputValidator, fakeInputHandler, new Board());
 
             Assert.Equal(3, inputReader.ReadIndex());
             Assert.True(TriggerWasCalled);

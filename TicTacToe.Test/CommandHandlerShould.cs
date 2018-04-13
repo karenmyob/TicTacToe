@@ -13,7 +13,7 @@ namespace TicTacToe.Test
             TriggerWasCalled = false;
             OutputForTesting outputForTesting = new OutputForTesting();
             CommandHandler inputHandler = new CommandHandler(outputForTesting);
-            inputHandler.Execute("q"); //I have no idea how to test this
+            inputHandler.Execute("q",new Board()); //I have no idea how to test this
             
         }
     }
@@ -27,7 +27,7 @@ namespace TicTacToe.Test
             this._outputType = outputType;
         }
         
-        public void Execute(string input)
+        public void Execute(string input, Board board)
         {
             var messageHandler = new MessageHandler();
             _outputType.CreateOutput(messageHandler.GetQuitMessage());
@@ -47,6 +47,47 @@ namespace TicTacToe.Test
         public void CreateOutput(string displayItem)
         {
             Console.WriteLine(displayItem);
+        }
+    }
+
+    public class MoveHandlerShould
+    {
+        [Fact]
+        public void AcceptAMove()
+        {
+            var outputForTesting = new OutputForTesting();
+            var inputHandler = new MoveHandler(outputForTesting);
+            inputHandler.Execute("1,3",new Board()); //I have no idea how to test this
+        }
+
+    }
+
+    public class MoveHandler : InputHandler
+    {
+        private Output _output;
+        public MoveHandler(Output outputType)
+        {
+            _output = outputType;
+        }
+
+        public void Execute(string input, Board board)
+        {
+            var x = GetX(input);
+            var y = GetY(input);
+
+            board.AddMove(x, y, "X");
+        }
+
+        private int GetY(string input)
+        {
+            var parts = input.Split(",");
+            return Int32.Parse(parts[1]);
+        }
+
+        private int GetX(string input)
+        {
+            var parts = input.Split(",");
+            return Int32.Parse(parts[0]);
         }
     }
 }
