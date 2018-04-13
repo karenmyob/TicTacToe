@@ -1,4 +1,6 @@
-﻿namespace TicTacToe
+﻿using System.Collections.Generic;
+
+namespace TicTacToe
 {
     public class MessageHandler
     {
@@ -45,6 +47,11 @@
         public string GetInvalidMessage()
         {
             return "Invalid...\n";
+        }
+
+        public string GetQuitMessage()
+        {
+            return "You quit the game\n";
         }
     }
 }

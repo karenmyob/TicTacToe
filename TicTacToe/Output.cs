@@ -2,6 +2,6 @@
 {
     public interface Output
     {
-        string CreateOutput(string displayItem);
+        void CreateOutput(string displayItem);
     }
 }

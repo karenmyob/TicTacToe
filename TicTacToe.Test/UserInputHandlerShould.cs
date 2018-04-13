@@ -7,7 +7,7 @@ namespace TicTacToe.Test
 {
     public class UserInputHandlerShould
     {
-        public bool inputHandlerWasCalled;
+        public bool TriggerWasCalled;
 
 
         [Fact]
@@ -18,11 +18,11 @@ namespace TicTacToe.Test
             
             var inputHandler = new UserInputHandler();
             var fakeInputHandler = new FakeInputHandler(this);
-            inputHandlerWasCalled = false;
+            TriggerWasCalled = false;
             inputHandler.GetInput(inputReader, inputValidator, fakeInputHandler);
             
             Assert.Equal(0, inputReader.ReadIndex());
-            Assert.True(inputHandlerWasCalled);
+            Assert.True(TriggerWasCalled);
         }
         [Fact]
         public void GetUserMoveUntilValid()
@@ -33,12 +33,12 @@ namespace TicTacToe.Test
             
             var inputHandler = new UserInputHandler();
             var fakeInputHandler = new FakeInputHandler(this);
-            inputHandlerWasCalled = false;
+            TriggerWasCalled = false;
 
             inputHandler.GetInput(inputReader, inputValidator, fakeInputHandler);
 
             Assert.Equal(3, inputReader.ReadIndex());
-            Assert.True(inputHandlerWasCalled);
+            Assert.True(TriggerWasCalled);
         }
     }
 }

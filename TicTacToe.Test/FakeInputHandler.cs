@@ -11,7 +11,7 @@ namespace TicTacToe.Test
 
         public void Execute(string input)
         {
-            inputHandlerTest.inputHandlerWasCalled = true;
+            inputHandlerTest.TriggerWasCalled = true;
         }
     }
 }

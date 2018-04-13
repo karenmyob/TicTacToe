@@ -68,5 +68,12 @@ namespace TicTacToe.Test
             var result = _messageHandler.GetInvalidMessage();
             Assert.Equal("Invalid...\n",result);
         }
+
+        [Fact]
+        public void ReturnQuitMessage()
+        {
+            var result = _messageHandler.GetQuitMessage();
+            Assert.Equal("You quit the game\n",result);
+        }
     }
 }
