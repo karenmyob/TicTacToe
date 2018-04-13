@@ -2,13 +2,13 @@ namespace TicTacToe
 {
     public class UserInputHandler
     {
-        public string GetInput(InputReader inputReader, InputValidator inputValidator)
+        public void GetInput(InputReader inputReader, InputValidator inputValidator, InputHandler inputHandler)
         {
             var input = inputReader.ReadInput();
             if (inputValidator.IsValid(input))
-                return input;
-            
-            return GetInput(inputReader, inputValidator); 
+                inputHandler.Execute(input);
+            else
+                GetInput(inputReader, inputValidator, inputHandler); 
         }
     }
 }

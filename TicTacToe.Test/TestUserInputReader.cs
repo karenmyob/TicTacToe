@@ -17,6 +17,10 @@ namespace TicTacToe.Test
         {
             _fakeUserInputList = inputList;
         }
+        public int ReadIndex()
+        {
+            return _index;
+        }
         public string ReadInput()
         {
             _index += 1;
