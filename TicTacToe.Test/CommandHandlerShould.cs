@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace TicTacToe.Test
@@ -70,12 +71,19 @@ namespace TicTacToe.Test
             _output = outputType;
         }
 
-        public void Execute(string input, Board board)
+        public void Execute(string input, Board board) //add a count in execute aswell
         {
+            var symbols = new List<string> {"X", "O"};
+            var c = symbols.Count;
+            
             var x = GetX(input);
             var y = GetY(input);
-
-            board.AddMove(x, y, "X");
+            
+            var index = c % (symbols.Count);
+            c += 1;
+            board.AddMove(x, y, symbols[index]);
+            
+            
         }
 
         private int GetY(string input)
