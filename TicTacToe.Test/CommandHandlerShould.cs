@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Xunit;
+﻿using Xunit;
 
 namespace TicTacToe.Test
 {
@@ -16,23 +15,6 @@ namespace TicTacToe.Test
             //inputHandler.Execute("q",new Board()); //I have no idea how to test this
             
         }
-    }
-
-    public class CommandHandler : InputHandler
-    {
-        private Output _outputType { get;}
-
-        public CommandHandler(Output outputType)
-        {
-            this._outputType = outputType;
-        }
-        
-        public void Execute(string input, Board board, InputReader inputReader, Dictionary<InputValidator,InputHandler>  executionHandler)
-        {
-            var messageHandler = new MessageHandler();
-            _outputType.CreateOutput(messageHandler.GetQuitMessage());
-        }
-
     }
 
     public class OutputForTesting : Output

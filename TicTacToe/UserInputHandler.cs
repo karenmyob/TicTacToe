@@ -4,22 +4,26 @@ namespace TicTacToe
 {
     public class UserInputHandler
     {
-        //public void GetInput(InputReader inputReader, InputValidator inputValidator, InputHandler inputHandler, Board board)
+        MessageHandler _messageHandler = new MessageHandler();
         public void GetInput(InputReader inputReader, Dictionary<InputValidator,InputHandler>  executionHandler, Board board)
         {
             var input = inputReader.ReadInput();
-            var flag = true;
+            var invaidFlag = true;
 
             foreach (var inputValidator in executionHandler.Keys)
             {
                 if (inputValidator.IsValid(input))
                 {
-                    flag = false;
+                    invaidFlag = false;
                     executionHandler[inputValidator].Execute(input, board,inputReader,executionHandler);
                 }
             }
-            if(flag)
-                GetInput(inputReader, executionHandler, board); 
+
+            if (invaidFlag)
+            {
+                //invalid Message
+                GetInput(inputReader, executionHandler, board);
+            }
         }
     }
 }

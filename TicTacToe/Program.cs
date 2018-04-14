@@ -10,11 +10,11 @@ namespace TicTacToe
             UserInputHandler inputHandler = new UserInputHandler();
             var executionDictionary = new Dictionary<InputValidator,InputHandler>()
             {
-                {new CommandValidator(), new CommandHandler(),},
-                {new PositionValidator(), fakeInputHandler}
+                {new CommandValidator(), new CommandHandler(new OutputToConsole()),},
+                {new PositionValidator(), new PositionHandler(new OutputToConsole())}
          
             };
-            inputHandler.GetInput(new ConsoleReader(), );
+            inputHandler.GetInput(new ConsoleReader(),executionDictionary,new Board() );
         }
     }
 }
