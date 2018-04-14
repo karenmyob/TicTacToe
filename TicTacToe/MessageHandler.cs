@@ -40,7 +40,7 @@ namespace TicTacToe
 
         public string GetWinMessageAndBoard(Board board)
         {
-            var renderer = new BoardRenderer(new Board());
+            var renderer = new BoardRenderer(board);
             return "Move accepted, well done you've won the game!\n\n" + renderer.ToText();
         }
 
