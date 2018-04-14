@@ -4,7 +4,7 @@ namespace TicTacToe
 {
     public class CommandHandler : InputHandler
     {
-        private Output _outputType { get;}
+        private Output _outputType;
 
         public CommandHandler(Output outputType)
         {
