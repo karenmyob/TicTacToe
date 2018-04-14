@@ -15,7 +15,7 @@ namespace TicTacToe
                 if (inputValidator.IsValid(input))
                 {
                     flag = false;
-                    executionHandler[inputValidator].Execute(input, board);
+                    executionHandler[inputValidator].Execute(input, board,inputReader,executionHandler);
                 }
             }
             if(flag)

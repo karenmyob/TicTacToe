@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace TicTacToe.Test
 {
     public class FakeInputHandler : InputHandler
@@ -9,7 +11,7 @@ namespace TicTacToe.Test
             inputHandlerTest = testClass;
         }
 
-        public void Execute(string input, Board board)
+        public void Execute(string input, Board board,InputReader inputReader, Dictionary<InputValidator,InputHandler>  executionHandler)
         {
             inputHandlerTest.TriggerWasCalled = true;
         }
