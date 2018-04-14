@@ -57,16 +57,16 @@ namespace TicTacToe.Test
         public void AcceptAMove()
         {
             var outputForTesting = new OutputForTesting();
-            var inputHandler = new MoveHandler(outputForTesting);
+            var inputHandler = new PositionHandler(outputForTesting);
             inputHandler.Execute("1,3",new Board()); //I have no idea how to test this
         }
 
     }
 
-    public class MoveHandler : InputHandler
+    public class PositionHandler : InputHandler
     {
         private Output _output;
-        public MoveHandler(Output outputType)
+        public PositionHandler(Output outputType)
         {
             _output = outputType;
         }

@@ -8,10 +8,18 @@ namespace TicTacToe
         public void GetInput(InputReader inputReader, Dictionary<InputValidator,InputHandler>  executionHandler, Board board)
         {
             var input = inputReader.ReadInput();
-            if (inputValidator.IsValid(input))
-                inputHandler.Execute(input,board);
-            else
-                GetInput(inputReader, inputValidator, inputHandler, board); 
+            var flag = true;
+
+            foreach (var inputValidator in executionHandler.Keys)
+            {
+                if (inputValidator.IsValid(input))
+                {
+                    flag = false;
+                    executionHandler[inputValidator].Execute(input, board);
+                }
+            }
+            if(flag)
+                GetInput(inputReader, executionHandler, board); 
         }
     }
 }
