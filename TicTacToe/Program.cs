@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TicTacToe
 {
@@ -6,7 +7,14 @@ namespace TicTacToe
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            UserInputHandler inputHandler = new UserInputHandler();
+            var executionDictionary = new Dictionary<InputValidator,InputHandler>()
+            {
+                {new CommandValidator(), new CommandHandler(),},
+                {new PositionValidator(), fakeInputHandler}
+         
+            };
+            inputHandler.GetInput(new ConsoleReader(), );
         }
     }
 }
