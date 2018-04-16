@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 
 namespace TicTacToe
 {
-    public class NameValidator : InputValidator
+    public class NameValidator : InputValidatorInterface
     {
         public bool IsValid(string input)
         {

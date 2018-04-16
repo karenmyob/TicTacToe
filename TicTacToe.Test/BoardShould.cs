@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
+using Xunit.Sdk;
 
 namespace TicTacToe.Test
 {
@@ -32,9 +33,23 @@ namespace TicTacToe.Test
         }
 
         [Fact]
-        public void GetXMoves()
+        public void GetMoves()
         {
+            var board = new Board();
+            board.AddMove(1, 1, "R");
+            board.AddMove(3, 3, "R");
             
+            var expected = new List<Move> {new Move(0,0),new Move(2,2)};
+            var result = board.GetMoves("R");
+            Assert.Equal(expected,result);
+        }
+
+        [Fact]
+        public void Quit()
+        {
+            var board = new Board();
+            board.QuitGame();
+            Assert.True(board.isQuit());
         }
 
         [Fact]
@@ -44,5 +59,6 @@ namespace TicTacToe.Test
             var expected = new string[,] {{".", ".", "."}, {".", ".", "."}, {".", ".", "."}};
             Assert.Equal(expected, _board.Moves);
         }
+        
     }
 }

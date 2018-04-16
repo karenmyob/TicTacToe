@@ -2,19 +2,20 @@
 
 namespace TicTacToe
 {
-    public class CommandHandler : InputHandler
+    public class CommandHandler : InputHandlerInterface
     {
-        private Output _outputType;
+        private readonly OutputHandlerInterface _outputHandler;
 
-        public CommandHandler(Output outputType)
+        public CommandHandler(OutputHandlerInterface outputHandler)
         {
-            this._outputType = outputType;
+            this._outputHandler = outputHandler;
         }
         
-        public void Execute(string input, Board board, InputReader inputReader, Dictionary<InputValidator,InputHandler>  executionHandler)
+        public void Execute(string input, Board board)
         {
             var messageHandler = new MessageHandler();
-            _outputType.CreateOutput(messageHandler.GetQuitMessage());
+            _outputHandler.Write(messageHandler.GetQuitMessage());
+            board.QuitGame();
         }
 
     }

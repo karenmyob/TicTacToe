@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace TicTacToe.Test
 {
-    public class FakeInputHandler : InputHandler
+    public class FakeInputHandler : InputHandlerInterface
     {
         private readonly UserInputHandlerShould inputHandlerTest;
         
@@ -11,7 +11,7 @@ namespace TicTacToe.Test
             inputHandlerTest = testClass;
         }
 
-        public void Execute(string input, Board board,InputReader inputReader, Dictionary<InputValidator,InputHandler>  executionHandler)
+        public void Execute(string input, Board board)
         {
             inputHandlerTest.TriggerWasCalled = true;
         }

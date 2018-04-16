@@ -1,6 +1,6 @@
 namespace TicTacToe
 {
-    public class CommandValidator : InputValidator
+    public class CommandValidator : InputValidatorInterface
     {
         public bool IsValid(string input)
         {

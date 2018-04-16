@@ -5,7 +5,7 @@ namespace TicTacToe
     public class UserInputHandler
     {
         MessageHandler _messageHandler = new MessageHandler();
-        public void GetInput(InputReader inputReader, Dictionary<InputValidator,InputHandler>  executionHandler, Board board)
+        public void GetInput(InputReader inputReader, Dictionary<InputValidatorInterface,InputHandlerInterface>  executionHandler, Board board)
         {
             var input = inputReader.ReadInput();
             var invaidFlag = true;
@@ -15,10 +15,11 @@ namespace TicTacToe
                 if (inputValidator.IsValid(input))
                 {
                     invaidFlag = false;
-                    executionHandler[inputValidator].Execute(input, board,inputReader,executionHandler);
+                    executionHandler[inputValidator].Execute(input, board);
                 }
             }
 
+            // Jordan: Is this running gameplay??
             if (invaidFlag)
             {
                 //invalid Message

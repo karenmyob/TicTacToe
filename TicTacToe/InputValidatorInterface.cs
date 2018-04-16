@@ -1,6 +1,6 @@
 ﻿namespace TicTacToe
 {
-    public interface InputValidator
+    public interface InputValidatorInterface
     {
         bool IsValid(string input);
 

@@ -8,14 +8,17 @@ namespace TicTacToe
         static void Main(string[] args)
         {
             UserInputHandler inputHandler = new UserInputHandler();
-            var executionDictionary = new Dictionary<InputValidator,InputHandler>
+            var executionDictionary = new Dictionary<InputValidatorInterface,InputHandlerInterface>
             {
                 {new CommandValidator(), new CommandHandler(new OutputToConsole())},
                 {new PositionValidator(), new PositionHandler(new OutputToConsole())}
          
             };
             
-            inputHandler.GetInput(new ConsoleReader(),executionDictionary,new Board() );
+         
+                //inputHandler.GetInput(new ConsoleReader(),executionDictionary, board);
+                
+           
         }
     }
 }

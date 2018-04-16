@@ -5,6 +5,7 @@ namespace TicTacToe
     public class Board
     {
         public string[,] Moves { get; private set; }
+        private bool _quit; //false by default
 
         public Board()
         {
@@ -43,6 +44,16 @@ namespace TicTacToe
                     Moves[i, j] = ".";
                 }
             }
+        }
+
+        public void QuitGame()
+        {
+            _quit = true;
+        }
+
+        public bool isQuit()
+        {
+            return _quit;
         }
     }
 }

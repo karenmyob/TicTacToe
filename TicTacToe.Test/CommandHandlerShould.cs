@@ -10,17 +10,19 @@ namespace TicTacToe.Test
         public void GetTheQuitMessage()
         {
             TriggerWasCalled = false;
-            OutputForTesting outputForTesting = new OutputForTesting();
-            CommandHandler inputHandler = new CommandHandler(outputForTesting);
+            OutputHandlerForTesting outputHandlerForTesting = new OutputHandlerForTesting();
+            CommandHandler inputHandler = new CommandHandler(outputHandlerForTesting);
             //inputHandler.Execute("q",new Board()); //I have no idea how to test this
             
         }
     }
 
-    public class OutputForTesting : Output
+    public class OutputHandlerForTesting : OutputHandlerInterface
     {
-        public void CreateOutput(string displayItem)
+        //public display
+        public void Write(string displayItem)
         {
+            //ljkjlkkl
         }
     }
 
@@ -29,7 +31,7 @@ namespace TicTacToe.Test
         [Fact]
         public void AcceptAMove()
         {
-            var outputForTesting = new OutputForTesting();
+            var outputForTesting = new OutputHandlerForTesting();
             var inputHandler = new PositionHandler(outputForTesting);
             //inputHandler.Execute("1,3",new Board()); //I have no idea how to test this
         }

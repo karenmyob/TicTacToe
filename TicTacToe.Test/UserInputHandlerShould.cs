@@ -20,7 +20,7 @@ namespace TicTacToe.Test
             var fakeInputHandler = new FakeInputHandler(this);
             TriggerWasCalled = false;
             
-            var executionDictionary = new Dictionary<InputValidator,InputHandler>()
+            var executionDictionary = new Dictionary<InputValidatorInterface,InputHandlerInterface>()
             {
                 {new CommandValidator(), fakeInputHandler},
                 {new PositionValidator(), fakeInputHandler}
@@ -36,13 +36,13 @@ namespace TicTacToe.Test
         {
             var orderedInputList = new List<string> {"j", ",2,2", "82,2", "1,1"};
             TestUserInputReader inputReader = new TestUserInputReader(orderedInputList);
-            InputValidator inputValidator = new PositionValidator();
+            InputValidatorInterface inputValidatorInterface = new PositionValidator();
             
             var inputHandler = new UserInputHandler();
             var fakeInputHandler = new FakeInputHandler(this);
             TriggerWasCalled = false;
             
-            var executionDictionary = new Dictionary<InputValidator,InputHandler>()
+            var executionDictionary = new Dictionary<InputValidatorInterface,InputHandlerInterface>()
             {
                 {new CommandValidator(), fakeInputHandler},
                 {new PositionValidator(), fakeInputHandler}

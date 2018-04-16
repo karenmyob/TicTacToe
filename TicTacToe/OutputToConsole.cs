@@ -2,9 +2,9 @@
 
 namespace TicTacToe
 {
-    public class OutputToConsole : Output
+    public class OutputToConsole : OutputHandlerInterface
     {
-        public void CreateOutput(string displayItem)
+        public void Write(string displayItem)
         {
             Console.WriteLine(displayItem);
         }
