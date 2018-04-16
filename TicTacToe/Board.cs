@@ -55,5 +55,10 @@ namespace TicTacToe
         {
             return _quit;
         }
+
+        public bool isFull()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

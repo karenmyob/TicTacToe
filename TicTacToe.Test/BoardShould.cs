@@ -59,6 +59,15 @@ namespace TicTacToe.Test
             var expected = new string[,] {{".", ".", "."}, {".", ".", "."}, {".", ".", "."}};
             Assert.Equal(expected, _board.Moves);
         }
+
+        [Fact]
+        public void ReturnIfBoardIsFull()
+        {
+            var board = new Board();
+            board.AddMove(1, 1, "X");
+            bool result = board.isFull();
+            Assert.False(result);
+        }
         
     }
 }
