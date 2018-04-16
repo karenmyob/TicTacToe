@@ -11,4 +11,8 @@ namespace TicTacToe.Test
             var gameEngine = new GameEngine();
         }
     }
+
+    public class GameEngine
+    {
+    }
 }
