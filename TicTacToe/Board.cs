@@ -4,13 +4,13 @@ namespace TicTacToe
 {
     public class Board
     {
-        public string[,] Moves { get; private set; }
+        public string[,] Moves { get;}
         private bool _quit; //false by default
-        private int moveCount;
+        public int MoveCount { get; private set; }
 
         public Board()
         {
-            moveCount = 0;
+            MoveCount = 0;
             Moves = new string[3,3];
             Initialise();
         }
@@ -18,7 +18,7 @@ namespace TicTacToe
         public Board AddMove(int x,int y, string token)
         {
             Moves[x-1, y-1] = token;
-            moveCount += 1;
+            MoveCount += 1;
             return this;
         }
         
@@ -60,7 +60,7 @@ namespace TicTacToe
 
         public bool isFull()
         {
-            return moveCount == 9;
+            return MoveCount == 9;
         }
     }
 }
