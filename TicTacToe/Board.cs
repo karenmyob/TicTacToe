@@ -6,9 +6,11 @@ namespace TicTacToe
     {
         public string[,] Moves { get; private set; }
         private bool _quit; //false by default
+        private int moveCount;
 
         public Board()
         {
+            moveCount = 0;
             Moves = new string[3,3];
             Initialise();
         }
@@ -16,7 +18,7 @@ namespace TicTacToe
         public Board AddMove(int x,int y, string token)
         {
             Moves[x-1, y-1] = token;
-
+            moveCount += 1;
             return this;
         }
         
@@ -58,7 +60,7 @@ namespace TicTacToe
 
         public bool isFull()
         {
-            throw new System.NotImplementedException();
+            return moveCount == 9;
         }
     }
 }

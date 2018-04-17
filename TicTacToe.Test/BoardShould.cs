@@ -61,12 +61,31 @@ namespace TicTacToe.Test
         }
 
         [Fact]
-        public void ReturnIfBoardIsFull()
+        public void ReturnIfBoardIsNotFull()
         {
             var board = new Board();
             board.AddMove(1, 1, "X");
             bool result = board.isFull();
             Assert.False(result);
+        }
+
+        [Fact]
+        public void ReturnIfBoardIsFull()
+        {
+            var board = new Board();
+            board.AddMove(1, 1, "X");
+            board.AddMove(1, 2, "X");
+            board.AddMove(1, 3, "X");
+            
+            board.AddMove(2, 1, "X");
+            board.AddMove(2, 2, "X");
+            board.AddMove(2, 3, "X");
+            
+            board.AddMove(3, 1, "X");
+            board.AddMove(3, 2, "O");
+            board.AddMove(3, 3, "X");
+            bool result = board.isFull();
+            Assert.True(result);
         }
         
     }

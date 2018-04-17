@@ -3,30 +3,19 @@
 namespace TicTacToe.Test
 {
     public class CommandHandlerShould
-    {
-        public bool TriggerWasCalled;
-            
+    {      
         [Fact]
         public void GetTheQuitMessage()
         {
-            TriggerWasCalled = false;
             OutputHandlerForTesting outputHandlerForTesting = new OutputHandlerForTesting();
             CommandHandler inputHandler = new CommandHandler(outputHandlerForTesting);
-            //inputHandler.Execute("q",new Board()); //I have no idea how to test this
+            inputHandler.Execute("q",new Board()); 
+            Assert.Equal("You quit the game\n",outputHandlerForTesting.toDisplay);
             
         }
     }
 
-    public class OutputHandlerForTesting : OutputHandlerInterface
-    {
-        //public display
-        public void Write(string displayItem)
-        {
-            //ljkjlkkl
-        }
-    }
-
-    public class MoveHandlerShould
+    public class PositionHandlerShould
     {
         [Fact]
         public void AcceptAMove()
