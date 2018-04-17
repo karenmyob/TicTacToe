@@ -20,7 +20,7 @@ namespace TicTacToe
             }
 
             // Jordan: Is this running gameplay??
-            if (invaidFlag)
+            if (invaidFlag) //create an invalid execution method
             {
                 //invalid Message
                 GetInput(inputReaderInterface, executionHandler, board);
