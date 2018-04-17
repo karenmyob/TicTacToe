@@ -5,9 +5,9 @@ namespace TicTacToe
     public class UserInputHandler
     {
         MessageHandler _messageHandler = new MessageHandler();
-        public void GetInput(InputReader inputReader, Dictionary<InputValidatorInterface,InputHandlerInterface>  executionHandler, Board board)
+        public void GetInput(InputReaderInterface inputReaderInterface, Dictionary<InputValidatorInterface,InputHandlerInterface>  executionHandler, Board board)
         {
-            var input = inputReader.ReadInput();
+            var input = inputReaderInterface.ReadInput();
             var invaidFlag = true;
 
             foreach (var inputValidator in executionHandler.Keys)
@@ -23,7 +23,7 @@ namespace TicTacToe
             if (invaidFlag)
             {
                 //invalid Message
-                GetInput(inputReader, executionHandler, board);
+                GetInput(inputReaderInterface, executionHandler, board);
             }
         }
     }

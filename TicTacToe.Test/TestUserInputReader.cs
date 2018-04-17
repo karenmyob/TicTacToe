@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TicTacToe.Test
 {
-    public class TestUserInputReader : InputReader
+    public class TestUserInputReader : InputReaderInterface
     {
         private int _index = -1;
         private readonly List<string> _fakeUserInputList = new List<string>();

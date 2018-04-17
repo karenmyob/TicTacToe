@@ -1,6 +1,6 @@
 ﻿namespace TicTacToe
 {
-    public interface InputReader
+    public interface InputReaderInterface
     {
         string ReadInput();
     }
