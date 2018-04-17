@@ -4,6 +4,6 @@ namespace TicTacToe
 {
     public interface InputHandlerInterface
     {
-        void Execute(string input, Board board);
+        Board Execute(string input, Board board);
     }
 }

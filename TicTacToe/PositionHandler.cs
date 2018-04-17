@@ -14,7 +14,7 @@ namespace TicTacToe
             _outputHandler = outputHandler;
         }
 
-        public void Execute(string input, Board board) //add a count in execute aswell
+        public Board Execute(string input, Board board) //add a count in execute aswell
         {
             var symbols = new List<string> {"X", "O"};
             var c = symbols.Count;
@@ -25,6 +25,8 @@ namespace TicTacToe
             var index = c % (symbols.Count);
             c += 1;
             board.AddMove(x, y, symbols[index]);  /// YOU MIGHT NEED TO PASS IN THE OUTPUT HANDLER SO THE BOARD KNOWS HOW TO OUTPUT
+            _outputHandler.Write(_messageHandler.GetAcceptedMoveMessageAndBoard(board));
+            return board;
 
             /*
             if (_winChecker.DidWin(board)) //implement board.isFull()

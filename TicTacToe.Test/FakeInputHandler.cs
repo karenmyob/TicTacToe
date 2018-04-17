@@ -11,9 +11,10 @@ namespace TicTacToe.Test
             inputHandlerTest = testClass;
         }
 
-        public void Execute(string input, Board board)
+        public Board Execute(string input, Board board)
         {
             inputHandlerTest.TriggerWasCalled = true;
+            return board;
         }
     }
 }
