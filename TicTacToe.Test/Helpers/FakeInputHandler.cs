@@ -4,16 +4,16 @@ namespace TicTacToe.Test
 {
     public class FakeInputHandler : InputHandlerInterface
     {
-        private readonly UserInputHandlerShould inputHandlerTest;
+        private readonly GameEngineInputShould _inputTest;
         
-        public FakeInputHandler(UserInputHandlerShould testClass)
+        public FakeInputHandler(GameEngineInputShould testClass)
         {
-            inputHandlerTest = testClass;
+            _inputTest = testClass;
         }
 
         public Board Execute(string input, Board board)
         {
-            inputHandlerTest.TriggerWasCalled = true;
+            _inputTest.TriggerWasCalled = true;
             return board;
         }
     }

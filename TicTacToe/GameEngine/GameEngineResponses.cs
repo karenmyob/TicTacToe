@@ -2,7 +2,7 @@
 
 namespace TicTacToe
 {
-    public class MessageHandler
+    public class GameEngineResponses
     {
         public string GetWelcomeMessage(Board board)
         {

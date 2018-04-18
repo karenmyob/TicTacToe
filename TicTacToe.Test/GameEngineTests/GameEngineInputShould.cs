@@ -5,7 +5,7 @@ using Xunit;
 
 namespace TicTacToe.Test
 {
-    public class UserInputHandlerShould
+    public class GameEngineInputShould
     {
         public bool TriggerWasCalled;
 
@@ -16,7 +16,7 @@ namespace TicTacToe.Test
  
             TestUserInputReader inputReader = new TestUserInputReader("1,1");
             
-            var inputHandler = new UserInputHandler();
+            var inputHandler = new GameEngineInput();
             var fakeInputHandler = new FakeInputHandler(this);
             TriggerWasCalled = false;
             
@@ -38,7 +38,7 @@ namespace TicTacToe.Test
             TestUserInputReader inputReader = new TestUserInputReader(orderedInputList);
             InputValidatorInterface inputValidatorInterface = new PositionValidator();
             
-            var inputHandler = new UserInputHandler();
+            var inputHandler = new GameEngineInput();
             var fakeInputHandler = new FakeInputHandler(this);
             TriggerWasCalled = false;
             

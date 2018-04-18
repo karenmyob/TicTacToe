@@ -1,6 +1,6 @@
 ﻿namespace TicTacToe
 {
-    public interface OutputHandlerInterface
+    public interface OutputWriterInterface
     {
         void Write(string displayItem);
     }

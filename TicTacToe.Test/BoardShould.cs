@@ -87,6 +87,17 @@ namespace TicTacToe.Test
             bool result = board.isFull();
             Assert.True(result);
         }
+
+        [Fact]
+        public void IdentifyAWin()
+        {
+            var board = new Board();
+            board.AddMove(1, 1, "X");
+            board.AddMove(2, 2, "X");
+            board.AddMove(3, 3, "X");
+            
+            Assert.True(board.DidWin());
+        }
         
     }
 }

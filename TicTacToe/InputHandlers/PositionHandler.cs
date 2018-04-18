@@ -6,10 +6,10 @@ namespace TicTacToe
     public class PositionHandler : InputHandlerInterface
     {
         private readonly WinChecker _winChecker = new WinChecker();
-        private readonly MessageHandler _messageHandler= new MessageHandler();
-        private readonly OutputHandlerInterface _outputHandler;
+        private readonly GameEngineResponses _gameEngineResponses= new GameEngineResponses();
+        private readonly OutputWriterInterface _outputHandler;
         
-        public PositionHandler(OutputHandlerInterface outputHandler)
+        public PositionHandler(OutputWriterInterface outputHandler)
         {
             _outputHandler = outputHandler;
         }
@@ -25,7 +25,7 @@ namespace TicTacToe
             var index = c % (symbols.Count);
             c += 1;
             board.AddMove(x, y, symbols[index]);  /// YOU MIGHT NEED TO PASS IN THE OUTPUT HANDLER SO THE BOARD KNOWS HOW TO OUTPUT
-            _outputHandler.Write(_messageHandler.GetAcceptedMoveMessageAndBoard(board));
+            _outputHandler.Write(_gameEngineResponses.GetAcceptedMoveMessageAndBoard(board));
             return board;
 
             /*

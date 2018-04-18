@@ -62,5 +62,11 @@ namespace TicTacToe
         {
             return MoveCount == 9;
         }
+
+        public bool DidWin()
+        {
+            var winChecker = new WinChecker();
+            return winChecker.DidWin(this);
+        }
     }
 }

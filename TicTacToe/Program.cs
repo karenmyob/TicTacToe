@@ -7,11 +7,12 @@ namespace TicTacToe
     {
         static void Main(string[] args)
         {
-            UserInputHandler inputHandler = new UserInputHandler();
+            GameEngineInput input = new GameEngineInput();
             var executionDictionary = new Dictionary<InputValidatorInterface,InputHandlerInterface>
             {
-                {new CommandValidator(), new CommandHandler(new OutputToConsole())},
-                {new PositionValidator(), new PositionHandler(new OutputToConsole())}
+                {new CommandValidator(), new CommandHandler(new ConsoleWriter())},
+                {new PositionValidator(), new PositionHandler(new ConsoleWriter())},
+                {new InvalidValidator(), new InvalidHandler(new ConsoleWriter())}
          
             };
             
