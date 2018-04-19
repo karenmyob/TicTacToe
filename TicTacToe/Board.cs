@@ -5,7 +5,7 @@ namespace TicTacToe
     public class Board
     {
         public string[,] Moves { get;}
-        private bool _quit; //false by default
+        private bool _quit;
         public int MoveCount { get; private set; }
         private readonly OutputWriterInterface _outputWriter;
         private readonly GameEngineResponses _gameMessages= new GameEngineResponses();
@@ -56,14 +56,14 @@ namespace TicTacToe
             _quit = true;
         }
 
-        public bool isQuit()
+        public bool IsQuit()
         {
             if (_quit)
                 _outputWriter.Write(_gameMessages.GetQuitMessage());
             return _quit;
         }
 
-        public bool isFull()
+        public bool IsFull()
         {
             if (MoveCount==9)
                 _outputWriter.Write(_gameMessages.GetBoardFullMessage());      

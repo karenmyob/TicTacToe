@@ -49,7 +49,7 @@ namespace TicTacToe.Test
         public void Quit()
         {
             _board.QuitGame();
-            Assert.True(_board.isQuit());
+            Assert.True(_board.IsQuit());
         }
 
         [Fact]
@@ -64,7 +64,7 @@ namespace TicTacToe.Test
         public void ReturnIfBoardIsNotFull()
         {
             _board.AddMove(1, 1, "X");
-            bool result = _board.isFull();
+            bool result = _board.IsFull();
             Assert.False(result);
         }
 
@@ -82,7 +82,7 @@ namespace TicTacToe.Test
             _board.AddMove(3, 1, "X");
             _board.AddMove(3, 2, "O");
             _board.AddMove(3, 3, "X");
-            bool result = _board.isFull();
+            bool result = _board.IsFull();
             Assert.True(result);
         }
 

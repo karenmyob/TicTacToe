@@ -30,12 +30,8 @@ namespace TicTacToe
                 while(board.MoveCount== numOfMoves) //until a move is accepted
                     inputEngine.GetInput(_inputReader, _executioner, board);
                 numOfMoves = board.MoveCount;
-                
 
-                //var full = board.isFull();
-
-
-                isGameOver = board.isQuit() || board.DidWin(); //|| full;
+                isGameOver = board.IsQuit() || board.DidWin()|| board.IsFull();
             } while (!isGameOver);
             
             
