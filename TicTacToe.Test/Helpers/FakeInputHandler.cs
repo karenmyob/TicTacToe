@@ -11,10 +11,9 @@ namespace TicTacToe.Test
             _inputTest = testClass;
         }
 
-        public Board Execute(string input, Board board)
+        public void Execute(string input, Board board)
         {
             _inputTest.TriggerWasCalled = true;
-            return board;
         }
     }
 }

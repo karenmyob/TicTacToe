@@ -4,20 +4,19 @@ namespace TicTacToe
 {
     public class InvalidHandler : InputHandlerInterface
     {
-        private readonly InputReaderInterface _inputReader;
-        private readonly Dictionary<InputValidatorInterface, InputHandlerInterface> _executionHandler;
+        private readonly GameEngineResponses _gameEngineResponses = new GameEngineResponses();
+        private readonly OutputWriterInterface _outputWriter;
         
 
-        public InvalidHandler(InputReaderInterface inputReader, Dictionary<InputValidatorInterface, InputHandlerInterface> executionHandler)
+        public InvalidHandler(OutputWriterInterface outputWriter)
         {
-            _inputReader = inputReader;
-            _executionHandler = executionHandler;
+            _outputWriter = outputWriter;
         }
 
-        public Board Execute(string input, Board board)
+        public void Execute(string input, Board board)
         {
-            var gameEngineInput = new GameEngineInput();
-            return gameEngineInput.GetInput(_inputReader, _executionHandler, board);
+            _outputWriter.Write(_gameEngineResponses.GetInvalidMessage());
+            
         }
     }
 }

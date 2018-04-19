@@ -2,10 +2,10 @@
 {
     public class OutputHandlerForTesting : OutputWriterInterface
     {
-        public string toDisplay ="";
+        public string ToDisplay ="";
         public void Write(string displayItem)
         {
-            toDisplay += displayItem;
+            ToDisplay += displayItem;
         }
     }
 }

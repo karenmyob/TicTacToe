@@ -6,12 +6,14 @@ namespace TicTacToe.Test
     public class WinCheckerShould
     {
         private readonly WinChecker _winChecker;
-        private Board _board;
+        private readonly Board _board;
+        private readonly OutputWriterInterface _outputWriter;
 
         public WinCheckerShould()
         {
             _winChecker = new WinChecker();
-            _board = new Board();
+            _outputWriter = new OutputHandlerForTesting();
+            _board = new Board(_outputWriter);
         }
 
         [Fact]

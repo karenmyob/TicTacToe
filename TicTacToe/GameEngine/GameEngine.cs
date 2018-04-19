@@ -1,40 +1,44 @@
 using System.Collections.Generic;
+using System.Net.Http;
 
 namespace TicTacToe
 {
     public class GameEngine
     {
-        private InputReaderInterface inputReader;
-        private OutputWriterInterface outputWriter;
-        private Dictionary<InputValidatorInterface, InputHandlerInterface> executioner;
+        private readonly InputReaderInterface _inputReader;
+        private readonly OutputWriterInterface _outputWriter;
+        private readonly Dictionary<InputValidatorInterface, InputHandlerInterface> _executioner;
+        private readonly GameEngineResponses _gameEngineResponses = new GameEngineResponses();
 
         public GameEngine(OutputWriterInterface outputWriter, InputReaderInterface inputReader, Dictionary<InputValidatorInterface, InputHandlerInterface> executioner)
         {
-            this.outputWriter = outputWriter;
-            this.inputReader = inputReader;
-            this.executioner = executioner;
+            this._outputWriter = outputWriter;
+            this._inputReader = inputReader;
+            this._executioner = executioner;
         }
 
         public void RunGame()
         {
-            var board= new Board();
-            var inputEngine = new GameEngineInput();
-
-            var playerWon = false;
+            var board= new Board(_outputWriter);
+            var inputEngine = new GameEngineInput(_outputWriter);
             var isGameOver = false;
+            var numOfMoves = board.MoveCount;
+            _outputWriter.Write(_gameEngineResponses.GetWelcomeMessage(board));
             
-            do
+           do
             {
-                board = inputEngine.GetInput(inputReader, executioner, board);
-                var quit = board.isQuit();
-                //playerWon = // add a winchecker to the board
-                var boardFull = board.isFull();
+                while(board.MoveCount== numOfMoves) //until a move is accepted
+                    inputEngine.GetInput(_inputReader, _executioner, board);
+                numOfMoves = board.MoveCount;
                 
-                isGameOver = quit || playerWon || boardFull;
+
+                //var full = board.isFull();
+
+
+                isGameOver = board.isQuit() || board.DidWin(); //|| full;
             } while (!isGameOver);
             
             
-            throw new System.NotImplementedException();
         }
     }
 }

@@ -8,10 +8,11 @@ namespace TicTacToe.Test
         
         private readonly Board _board;
         private readonly GameEngineResponses _gameEngineResponses;
+        private readonly OutputWriterInterface _outputWriter = new OutputHandlerForTesting();
 
         public MessageHandlerShould()
         {
-            _board =  new Board();
+            _board =  new Board(_outputWriter);
             _gameEngineResponses = new GameEngineResponses();
         }
         [Fact]
@@ -74,6 +75,13 @@ namespace TicTacToe.Test
         {
             var result = _gameEngineResponses.GetQuitMessage();
             Assert.Equal("You quit the game\n",result);
+        }
+
+        [Fact]
+        public void ReturnBoardIsFullMessage()
+        {
+            var result = _gameEngineResponses.GetBoardFullMessage();
+            Assert.Equal("There were no winners\n\n",result);
         }
     }
 }

@@ -7,9 +7,12 @@ namespace TicTacToe
         public string[,] Moves { get;}
         private bool _quit; //false by default
         public int MoveCount { get; private set; }
+        private readonly OutputWriterInterface _outputWriter;
+        private readonly GameEngineResponses _gameMessages= new GameEngineResponses();
 
-        public Board()
+        public Board(OutputWriterInterface outputWriter)
         {
+            _outputWriter = outputWriter;
             MoveCount = 0;
             Moves = new string[3,3];
             Initialise();
@@ -55,18 +58,26 @@ namespace TicTacToe
 
         public bool isQuit()
         {
+            if (_quit)
+                _outputWriter.Write(_gameMessages.GetQuitMessage());
             return _quit;
         }
 
         public bool isFull()
         {
+            if (isFull())
+                _outputWriter.Write(_gameMessages.GetBoardFullMessage());      
+            
             return MoveCount == 9;
         }
 
         public bool DidWin()
         {
             var winChecker = new WinChecker();
-            return winChecker.DidWin(this);
+            var won = winChecker.DidWin(this);
+            if(won)
+                _outputWriter.Write(_gameMessages.GetWinMessageAndBoard(this));
+            return won;
         }
     }
 }

@@ -7,7 +7,7 @@ namespace TicTacToe
     {
         static void Main(string[] args)
         {
-            GameEngineInput input = new GameEngineInput();
+            
             var executionDictionary = new Dictionary<InputValidatorInterface,InputHandlerInterface>
             {
                 {new CommandValidator(), new CommandHandler(new ConsoleWriter())},
@@ -17,7 +17,8 @@ namespace TicTacToe
             };
             
          
-                //inputHandler.GetInput(new ConsoleReader(),executionDictionary, board);
+            var gameEngine = new GameEngine(new ConsoleWriter(), new ConsoleReader(), executionDictionary);
+            gameEngine.RunGame();
                 
            
         }

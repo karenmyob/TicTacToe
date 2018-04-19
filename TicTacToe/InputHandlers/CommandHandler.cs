@@ -11,12 +11,11 @@ namespace TicTacToe
             this._outputHandler = outputHandler;
         }
         
-        public Board Execute(string input, Board board)
+        public void Execute(string input, Board board)
         {
             var messageHandler = new GameEngineResponses();
             _outputHandler.Write(messageHandler.GetQuitMessage());
             board.QuitGame();
-            return board;
         }
 
     }

@@ -4,29 +4,28 @@ namespace TicTacToe
 {
     public class GameEngineInput
     {
-        GameEngineResponses _gameEngineResponses = new GameEngineResponses();
-        public Board GetInput(InputReaderInterface inputReaderInterface, Dictionary<InputValidatorInterface,InputHandlerInterface>  executionHandler, Board board)
+        private OutputWriterInterface _outputWriter;
+        private readonly GameEngineResponses _gameEngineResponses = new GameEngineResponses();
+
+        public GameEngineInput(OutputWriterInterface outputWriter)
         {
+            _outputWriter = outputWriter;
+        }
+
+        public void GetInput(InputReaderInterface inputReaderInterface, Dictionary<InputValidatorInterface,InputHandlerInterface>  executionHandler, Board board)
+        {
+            _outputWriter.Write(_gameEngineResponses.GetInstruction("X"));
             var input = inputReaderInterface.ReadInput();
-            //var invaidFlag = true;
 
             foreach (var inputValidator in executionHandler.Keys)
             {
                 if (inputValidator.IsValid(input))
                 {
-                    //invaidFlag = false;
-                    board = executionHandler[inputValidator].Execute(input, board);
+                    executionHandler[inputValidator].Execute(input, board);
+                    break;
                 }
             }
 
-            // Jordan: Is this running gameplay??
-         /*   if (invaidFlag) //create an invalid execution method
-            {
-                //invalid Message
-                GetInput(inputReaderInterface, executionHandler, board);
-            }*/
-
-            return board;
         }
     }
 }

@@ -53,5 +53,10 @@ namespace TicTacToe
         {
             return "You quit the game\n";
         }
+
+        public string GetBoardFullMessage()
+        {
+            return "There were no winners\n\n";
+        }
     }
 }

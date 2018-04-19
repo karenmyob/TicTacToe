@@ -8,6 +8,12 @@ namespace TicTacToe.Test
     public class GameEngineInputShould
     {
         public bool TriggerWasCalled;
+        private readonly OutputWriterInterface _outputWriter;
+
+        public GameEngineInputShould()
+        {
+            _outputWriter = new OutputHandlerForTesting();
+        }
 
 
         [Fact]
@@ -16,7 +22,7 @@ namespace TicTacToe.Test
  
             TestUserInputReader inputReader = new TestUserInputReader("1,1");
             
-            var inputHandler = new GameEngineInput();
+            var inputHandler = new GameEngineInput(_outputWriter);
             var fakeInputHandler = new FakeInputHandler(this);
             TriggerWasCalled = false;
             
@@ -26,7 +32,7 @@ namespace TicTacToe.Test
                 {new PositionValidator(), fakeInputHandler}
          
             };
-            inputHandler.GetInput(inputReader, executionDictionary, new Board());
+            inputHandler.GetInput(inputReader, executionDictionary, new Board(_outputWriter));
             
             Assert.Equal(0, inputReader.ReadIndex());
             Assert.True(TriggerWasCalled);
@@ -38,7 +44,7 @@ namespace TicTacToe.Test
             TestUserInputReader inputReader = new TestUserInputReader(orderedInputList);
             InputValidatorInterface inputValidatorInterface = new PositionValidator();
             
-            var inputHandler = new GameEngineInput();
+            var inputHandler = new GameEngineInput(_outputWriter);
             var fakeInputHandler = new FakeInputHandler(this);
             TriggerWasCalled = false;
             
@@ -49,7 +55,7 @@ namespace TicTacToe.Test
          
             };
             
-            inputHandler.GetInput(inputReader, executionDictionary, new Board());
+            inputHandler.GetInput(inputReader, executionDictionary, new Board(_outputWriter));
 
             Assert.Equal(3, inputReader.ReadIndex());
             Assert.True(TriggerWasCalled);
