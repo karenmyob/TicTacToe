@@ -4,7 +4,7 @@ namespace TicTacToe
 {
     public class GameEngineInput
     {
-        private OutputWriterInterface _outputWriter;
+        private readonly OutputWriterInterface _outputWriter;
         private readonly GameEngineResponses _gameEngineResponses = new GameEngineResponses();
 
         public GameEngineInput(OutputWriterInterface outputWriter)

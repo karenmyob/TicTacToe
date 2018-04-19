@@ -65,7 +65,7 @@ namespace TicTacToe
 
         public bool isFull()
         {
-            if (isFull())
+            if (MoveCount==9)
                 _outputWriter.Write(_gameMessages.GetBoardFullMessage());      
             
             return MoveCount == 9;
