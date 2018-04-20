@@ -1,18 +1,15 @@
-using System.ComponentModel.DataAnnotations;
 using Xunit;
 
 namespace TicTacToe.Test
 {
-    public class PositionValidatorShould
+    public class MoveValidatorShould
     {
         [Theory]
-        [InlineData("1,1")]
-        [InlineData("1,2")]
         [InlineData("q")]
         public void AcceptValidPostions(string input)
         {
-            var positionValidator = new PositionValidator();
-            var result = positionValidator.IsValid(input);
+            var commmandValidator = new CommandValidator();
+            var result = commmandValidator.IsValid(input);
             Assert.True(result);
         }
         
@@ -23,10 +20,9 @@ namespace TicTacToe.Test
         [InlineData("4,1")]
         public void DeclineInvalidPostions(string input)
         {
-            var positionValidator = new PositionValidator();
-            var result = positionValidator.IsValid(input);
+            var commandValidator = new CommandValidator();
+            var result = commandValidator.IsValid(input);
             Assert.False(result);
         }
-        
     }
 }

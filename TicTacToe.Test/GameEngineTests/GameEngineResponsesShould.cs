@@ -7,17 +7,18 @@ namespace TicTacToe.Test
     {   
         
         private readonly Board _board;
-        private readonly MessageHandler _messageHandler;
+        private readonly GameEngineResponses _gameEngineResponses;
+        private readonly OutputWriterInterface _outputWriter = new OutputHandlerForTesting();
 
         public MessageHandlerShould()
         {
-            _board =  new Board();
-            _messageHandler = new MessageHandler();
+            _board =  new Board(_outputWriter);
+            _gameEngineResponses = new GameEngineResponses();
         }
         [Fact]
         public void ReturnWelcomeMessage()
         {
-            var result = _messageHandler.GetWelcomeMessage(_board);           
+            var result = _gameEngineResponses.GetWelcomeMessage(_board);           
             var boardRenderer = new BoardRenderer(_board);
             
             Assert.Equal("Welcome to Tic Tac Toe!\n\nHere's the current board:\n\n"+boardRenderer.ToText(),result);
@@ -26,14 +27,14 @@ namespace TicTacToe.Test
         [Fact]
         public void ReturnInstructionWithPlayerNameX()
         {
-            var result = _messageHandler.GetInstruction("X");
+            var result = _gameEngineResponses.GetInstruction("X");
             Assert.Equal("Player 1 enter a coord x,y to place your X or enter 'q' to give up: ",result);
         }
         
         [Fact]
         public void ReturnInstructionWithPlayerNameO()
         {
-            var result = _messageHandler.GetInstruction("O");
+            var result = _gameEngineResponses.GetInstruction("O");
             Assert.Equal("Player 2 enter a coord x,y to place your O or enter 'q' to give up: ",result);
         }
 
@@ -42,7 +43,7 @@ namespace TicTacToe.Test
         {
             _board.AddMove(1, 1, "X");
             var boardRenderer = new BoardRenderer(_board);
-            var result = _messageHandler.GetAcceptedMoveMessageAndBoard(_board);
+            var result = _gameEngineResponses.GetAcceptedMoveMessageAndBoard(_board);
             Assert.Equal("Move Accepted, here's the current board:\n"+boardRenderer.ToText(),result);
             
         }
@@ -50,14 +51,14 @@ namespace TicTacToe.Test
         [Fact]
         public void ReturnMessageForTakenSpace()
         {
-            var result = _messageHandler.GetMoveTakenMessage();
+            var result = _gameEngineResponses.GetMoveTakenMessage();
             Assert.Equal("Oh no, a piece is already at this place! Try again...\n",result);
         }
 
         [Fact]
         public void ReturnWinMessage()
         {
-            var result = _messageHandler.GetWinMessageAndBoard(_board);
+            var result = _gameEngineResponses.GetWinMessageAndBoard(_board);
             var renderer = new BoardRenderer(_board);
             Assert.Equal("Move accepted, well done you've won the game!\n\n"+renderer.ToText(),result);
 
@@ -65,8 +66,22 @@ namespace TicTacToe.Test
         [Fact]
         public void ReturnMessageForInvalidInput()
         {
-            var result = _messageHandler.GetInvalidMessage();
+            var result = _gameEngineResponses.GetInvalidMessage();
             Assert.Equal("Invalid...\n",result);
+        }
+
+        [Fact]
+        public void ReturnQuitMessage()
+        {
+            var result = _gameEngineResponses.GetQuitMessage();
+            Assert.Equal("You quit the game\n",result);
+        }
+
+        [Fact]
+        public void ReturnBoardIsFullMessage()
+        {
+            var result = _gameEngineResponses.GetBoardFullMessage();
+            Assert.Equal("There were no winners\n\n",result);
         }
     }
 }

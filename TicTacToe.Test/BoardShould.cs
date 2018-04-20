@@ -2,16 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
+using Xunit.Sdk;
 
 namespace TicTacToe.Test
 {
     public class BoardShould
     {
         private readonly Board _board;
+        private readonly OutputWriterInterface _outputWriter;
 
         public BoardShould()
         {
-            _board =  new Board();
+            _outputWriter = new OutputHandlerForTesting();
+            _board =  new Board(_outputWriter);
         }
         
         [Fact]
@@ -32,9 +35,21 @@ namespace TicTacToe.Test
         }
 
         [Fact]
-        public void GetXMoves()
+        public void GetMoves()
         {
+            _board.AddMove(1, 1, "R");
+            _board.AddMove(3, 3, "R");
             
+            var expected = new List<Move> {new Move(0,0),new Move(2,2)};
+            var result = _board.GetMoves("R");
+            Assert.Equal(expected,result);
+        }
+
+        [Fact]
+        public void Quit()
+        {
+            _board.QuitGame();
+            Assert.True(_board.IsQuit());
         }
 
         [Fact]
@@ -44,5 +59,42 @@ namespace TicTacToe.Test
             var expected = new string[,] {{".", ".", "."}, {".", ".", "."}, {".", ".", "."}};
             Assert.Equal(expected, _board.Moves);
         }
+
+        [Fact]
+        public void ReturnIfBoardIsNotFull()
+        {
+            _board.AddMove(1, 1, "X");
+            bool result = _board.IsFull();
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void ReturnIfBoardIsFull()
+        {
+            _board.AddMove(1, 1, "X");
+            _board.AddMove(1, 2, "X");
+            _board.AddMove(1, 3, "X");
+            
+            _board.AddMove(2, 1, "X");
+            _board.AddMove(2, 2, "X");
+            _board.AddMove(2, 3, "X");
+            
+            _board.AddMove(3, 1, "X");
+            _board.AddMove(3, 2, "O");
+            _board.AddMove(3, 3, "X");
+            bool result = _board.IsFull();
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void IdentifyAWin()
+        {
+            _board.AddMove(1, 1, "X");
+            _board.AddMove(2, 2, "X");
+            _board.AddMove(3, 3, "X");
+            
+            Assert.True(_board.DidWin());
+        }
+        
     }
 }

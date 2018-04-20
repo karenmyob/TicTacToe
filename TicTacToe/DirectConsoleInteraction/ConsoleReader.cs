@@ -3,7 +3,7 @@ using System.Dynamic;
 
 namespace TicTacToe
 {
-    public class ConsoleReader : InputReader
+    public class ConsoleReader : InputReaderInterface
     {
         public string ReadInput()
         {
