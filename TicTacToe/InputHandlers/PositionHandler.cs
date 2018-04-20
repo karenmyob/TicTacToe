@@ -8,6 +8,7 @@ namespace TicTacToe
         private readonly WinChecker _winChecker = new WinChecker();
         private readonly GameEngineResponses _gameEngineResponses= new GameEngineResponses();
         private readonly OutputWriterInterface _outputHandler;
+        private readonly StringSplitter _stringSplitter = new StringSplitter();
         
         public PositionHandler(OutputWriterInterface outputHandler)
         {
@@ -19,8 +20,8 @@ namespace TicTacToe
             var symbols = new List<string> {"X", "O"};
             var c = symbols.Count;
             
-            var x = GetX(input);
-            var y = GetY(input);
+            var x = _stringSplitter.GetX(input);
+            var y = _stringSplitter.GetY(input);
             
             var index = c % (symbols.Count);
             board.AddMove(x, y, symbols[index]);
@@ -29,16 +30,5 @@ namespace TicTacToe
 
         }
 
-        private int GetY(string input)
-        {
-            var parts = input.Split(",");
-            return Int32.Parse(parts[1]);
-        }
-
-        private int GetX(string input)
-        {
-            var parts = input.Split(",");
-            return Int32.Parse(parts[0]);
-        }
     }
 }

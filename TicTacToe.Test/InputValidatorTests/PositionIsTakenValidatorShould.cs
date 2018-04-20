@@ -10,6 +10,16 @@ namespace TicTacToe.Test
             var board = new Board(new OutputHandlerForTesting());
             board.AddMove(1, 1, "x");
             var positionIsTakenValidator = new PositionIsTakenValidator(board, new OutputHandlerForTesting());
+            Assert.True(positionIsTakenValidator.IsValid("1,1"));
+            
+        }
+        [Fact]
+        public void ValidateIfAPositionIsValidButNotTaken()
+        {
+            var board = new Board(new OutputHandlerForTesting());
+            board.AddMove(1, 1, "x");
+            var positionIsTakenValidator = new PositionIsTakenValidator(board, new OutputHandlerForTesting());
+            Assert.False(positionIsTakenValidator.IsValid("1,2"));
             
         }
     }
