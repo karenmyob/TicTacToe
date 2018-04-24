@@ -53,14 +53,6 @@ namespace TicTacToe.Test
         }
 
         [Fact]
-        public void Initialise()
-        {
-            _board.Initialise();
-            var expected = new string[,] {{".", ".", "."}, {".", ".", "."}, {".", ".", "."}};
-            Assert.Equal(expected, _board.Moves);
-        }
-
-        [Fact]
         public void ReturnIfBoardIsNotFull()
         {
             _board.AddMove(1, 1, "X");

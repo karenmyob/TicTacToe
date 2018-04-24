@@ -4,18 +4,18 @@ namespace TicTacToe
 {
     public class BoardRenderer
     {
-        private Board board;
-        public BoardRenderer(Board board)
+        private readonly BoardInterface _board;
+        public BoardRenderer(BoardInterface board)
         {
-            this.board = board;
+            this._board = board;
         }
         public string ToText()
         {
             var boardString = "";
-            var boardArray = board.Moves;
-            for (int i = 0; i < boardArray.GetLength(0); i++)
+            var boardArray = _board.Moves;
+            for (var i = 0; i < boardArray.GetLength(0); i++)
             {
-                for (int j = 0; j < boardArray.GetLength(1); j++)
+                for (var j = 0; j < boardArray.GetLength(1); j++)
                 {
                     boardString += boardArray[j, i];
                 }

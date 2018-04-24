@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace TicTacToe
 {
-    public class Board
+    public class Board : BoardInterface
     {
         public string[,] Moves { get;}
         private bool _quit;
@@ -18,7 +18,7 @@ namespace TicTacToe
             Initialise();
         }
 
-        public Board AddMove(int x,int y, string token)
+        public BoardInterface AddMove(int x,int y, string token)
         {
             Moves[x-1, y-1] = token;
             MoveCount += 1;
@@ -40,7 +40,7 @@ namespace TicTacToe
             return moves;
         }
 
-        public void Initialise()
+        private void Initialise()
         {
             for (int i = 0; i < Moves.GetLength(0); i++)
             {

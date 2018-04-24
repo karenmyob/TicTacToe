@@ -13,7 +13,7 @@ namespace TicTacToe
             _outputWriter = outputWriter;
         }
 
-        public void Execute(string input, Board board)
+        public void Execute(string input, BoardInterface board)
         {
             _outputWriter.Write(_gameEngineResponses.GetInvalidMessage());
             

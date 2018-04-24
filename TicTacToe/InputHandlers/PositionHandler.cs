@@ -15,15 +15,14 @@ namespace TicTacToe
             _outputHandler = outputHandler;
         }
 
-        public void Execute(string input, Board board)
+        public void Execute(string input, BoardInterface board)
         {
             var symbols = new List<string> {"X", "O"};
-            var c = symbols.Count;
             
             var x = _stringSplitter.GetX(input);
             var y = _stringSplitter.GetY(input);
             
-            var index = c % (symbols.Count);
+            var index = board.MoveCount % (symbols.Count);
             board.AddMove(x, y, symbols[index]);
             if(!board.DidWin())
                 _outputHandler.Write(_gameEngineResponses.GetAcceptedMoveMessageAndBoard(board));

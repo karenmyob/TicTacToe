@@ -12,9 +12,10 @@ namespace TicTacToe
             _outputWriter = outputWriter;
         }
 
-        public void GetInput(InputReaderInterface inputReaderInterface, Dictionary<InputValidatorInterface,InputHandlerInterface>  executionHandler, Board board)
+        public void GetInput(InputReaderInterface inputReaderInterface, Dictionary<InputValidatorInterface,InputHandlerInterface>  executionHandler, BoardInterface board)
         {
-            _outputWriter.Write(_gameEngineResponses.GetInstruction("X"));
+            var symbols = new List<string>{"X","O"};
+            _outputWriter.Write(_gameEngineResponses.GetInstruction(symbols[board.MoveCount%symbols.Count]));
             var input = inputReaderInterface.ReadInput();
 
             foreach (var inputValidator in executionHandler.Keys)

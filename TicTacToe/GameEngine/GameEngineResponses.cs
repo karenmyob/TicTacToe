@@ -4,7 +4,7 @@ namespace TicTacToe
 {
     public class GameEngineResponses
     {
-        public string GetWelcomeMessage(Board board)
+        public string GetWelcomeMessage(BoardInterface board)
         {
             var boardRenderer = new BoardRenderer(board);
             return "Welcome to Tic Tac Toe!\n\nHere's the current board:\n\n"+boardRenderer.ToText();
@@ -27,7 +27,7 @@ namespace TicTacToe
             return player + " enter a coord x,y to place your "+symbol+" or enter 'q' to give up: ";
         }
 
-        public string GetAcceptedMoveMessageAndBoard(Board board)
+        public string GetAcceptedMoveMessageAndBoard(BoardInterface board)
         {
             var boardRenderer = new BoardRenderer(board);
             return "Move Accepted, here's the current board:\n"+boardRenderer.ToText();
@@ -38,7 +38,7 @@ namespace TicTacToe
             return "Oh no, a piece is already at this place! Try again...\n";
         }
 
-        public string GetWinMessageAndBoard(Board board)
+        public string GetWinMessageAndBoard(BoardInterface board)
         {
             var renderer = new BoardRenderer(board);
             return "Move accepted, well done you've won the game!\n\n" + renderer.ToText();

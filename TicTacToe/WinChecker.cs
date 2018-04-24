@@ -9,6 +9,9 @@ namespace TicTacToe
     {
         private int NumberInARowToWin = 3;
 
+        
+        // LETS TAKE THE BOARD INTERFACE IN AS A PARAM ON THE CONSTRUCTOR BECAUSE THE BOARD OWNS THE WINCHECKER
+        
         public bool DidWin(Board board)
         {
             var xMoves = board.GetMoves("X");
