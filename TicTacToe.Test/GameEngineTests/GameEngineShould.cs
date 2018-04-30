@@ -11,7 +11,7 @@ namespace TicTacToe.Test
         public void RunGame()
         {
             var outputHandler = new OutputHandlerForTesting();
-            var listOfUserMoves = new List<string> {"quit"};
+            var listOfUserMoves = new List<string> {"not quit","nq","quit"};
             var inputReader = new TestUserInputReader(listOfUserMoves);
             var  board = new MockBoard();
 
@@ -22,9 +22,7 @@ namespace TicTacToe.Test
 
             var gameEngine = new GameEngine(outputHandler, inputReader, executionDictionary,board);;
             gameEngine.RunGame();
-            Assert.Equal("Player 1 enter a coord x,y to place your X or enter 'q' to give up: " 
-                         
-                , outputHandler.ToDisplay);
+            Assert.Equal(inputReader.ReadIndex(), 2);
         }
     }
 }
