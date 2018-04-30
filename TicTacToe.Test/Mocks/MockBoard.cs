@@ -14,7 +14,6 @@ namespace TicTacToe.Test
 
         public BoardInterface AddMove(int x, int y, string token)
         {
-            MoveCount += 1;
             return this;
         }
 
@@ -25,37 +24,23 @@ namespace TicTacToe.Test
 
         public void QuitGame()
         {
-            throw new System.NotImplementedException();
+            _quit = true;
         }
 
         public bool IsQuit()
-        {
-            return false;
+        { 
+            return _quit;
         }
 
         public bool IsFull()
         {
-            return false;
+            return _full;
         }
 
         public bool DidWin()
         {
-            return true;
+            return _win;
         }
 
-        public void SetQuit()
-        {
-            _quit = true;
-        }
-
-        public void SetFull()
-        {
-            _full = true;
-        }
-
-        public void SetWin()
-        {
-            _win = true;
-        }
     }
 }

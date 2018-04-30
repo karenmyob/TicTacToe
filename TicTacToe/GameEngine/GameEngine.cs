@@ -21,17 +21,13 @@ namespace TicTacToe
 
         public void RunGame()
         {
-            //var _board= new Board(_outputWriter);
             var inputEngine = new GameEngineInput(_outputWriter);
             var isGameOver = false;
-            var numOfMoves = _board.MoveCount;
             _outputWriter.Write(_gameEngineResponses.GetWelcomeMessage(_board));
             
            do
             {
-                while(_board.MoveCount== numOfMoves) //until a move is accepted
-                    inputEngine.GetInput(_inputReader, _executioner, _board);
-                numOfMoves = _board.MoveCount;
+                inputEngine.GetInput(_inputReader, _executioner, _board);
 
                 isGameOver = _board.IsQuit() || _board.DidWin()|| _board.IsFull();
             } while (!isGameOver);
